@@ -39,9 +39,9 @@
     </el-row>
     <div class="text-center margin-top">
       <div v-if="loading">
-        加载中...
+        Loading...
       </div>
-      <div v-if="noMore">没有更多了</div>
+      <div v-if="noMore">No more data</div>
     </div>
   </div>
 </template>

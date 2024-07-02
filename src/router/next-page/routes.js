@@ -11,7 +11,7 @@ export default [
         name: 'nextPageInfo',
         component: () => import('@/views/next-page/details.vue'),
         meta: {
-          title: '下一页详情'
+          title: 'Details on the next page'
         }
       }
     ]

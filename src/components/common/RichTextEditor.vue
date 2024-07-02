@@ -34,39 +34,35 @@ export default {
     init() {
       const options = {
         modules: {
-          // imageDrop: true, // 图片拖拽
           imageResize: {
-            displayStyles: { // 放大缩小
+            displayStyles: {
               backgroundColor: 'black',
               border: 'none',
               color: 'white'
             },
             modules: ['Resize', 'DisplaySize', 'Toolbar']
           },
-          // clipboard: {
-          //   matchers: [[Node.ELEMENT_NODE, this.handleCustomMatcher]]// 粘贴版，处理粘贴时候带图片
-          // },
           toolbar: [
-            ['bold', 'italic', 'underline', 'strike'], // 切换按钮
+            ['bold', 'italic', 'underline', 'strike'],
             ['blockquote', 'code-block'],
 
             [{ list: 'ordered' }, { list: 'bullet' }],
-            [{ script: 'sub' }, { script: 'super' }], // 上标/下标
-            [{ indent: '-1' }, { indent: '+1' }], // 减少缩进/缩进
-            [{ direction: 'rtl' }], // 文本下划线
+            [{ script: 'sub' }, { script: 'super' }],
+            [{ indent: '-1' }, { indent: '+1' }],
+            [{ direction: 'rtl' }],
 
-            [{ size: ['small', false, 'large', 'huge'] }], // 用户自定义下拉
+            [{ size: ['small', false, 'large', 'huge'] }],
             [{ header: [1, 2, 3, 4, 5, 6, false] }],
 
-            [{ color: [] }, { background: [] }], // 主题默认下拉，使用主题提供的值
+            [{ color: [] }, { background: [] }],
             [{ align: [] }],
 
             ['link', 'image'],
 
-            ['clean'] // 清除格式
+            ['clean']
           ]
         },
-        placeholder: '请输入文章内容…',
+        placeholder: 'Please enter the content of the article...',
         theme: 'snow'
       }
       this.quill = new Quill(this.$refs.richTextEditor, options)

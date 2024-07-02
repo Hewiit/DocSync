@@ -6,7 +6,7 @@
           size="mini"
           icon="el-icon-back"
           @click="onFile"
-        >返回</el-button>
+        >Back</el-button>
       </template>
       <template slot="right">
         <el-popover
@@ -14,14 +14,14 @@
           placement="top"
           width="350"
         >
-          <p>通过ID添加协作者</p>
+          <p>Add collaborator by ID</p>
           <el-input
             v-model="form_invite.accept_id"
-            placeholder="输入ID"
-            style="width: 80%;margin: auto"
+            placeholder="Enter ID"
+            style="width: 80%; margin: auto"
           />
           <p></p>
-          <el-select v-model="form_invite.power" placeholder="请选择权限">
+          <el-select v-model="form_invite.power" placeholder="Select permission">
             <el-option
               v-for="item in powerOptions"
               :key="item.value"
@@ -30,14 +30,14 @@
             />
           </el-select>
           <div style="text-align: left; margin: 0">
-            <el-button size="mini" style="margin-top:10px" @click="invite(), visible = false">确定</el-button>
+            <el-button size="mini" style="margin-top: 10px" @click="invite(), visible = false">Confirm</el-button>
           </div>
           <el-button
             slot="reference"
-            style="margin-right:10px"
+            style="margin-right: 10px"
             size="mini"
             icon="el-icon-plus"
-          >添加成员
+          >Add Member
           </el-button>
         </el-popover>
         <el-button
@@ -46,7 +46,7 @@
           size="mini"
           icon="el-icon-delete"
           @click="deleteMultiItem"
-        >删除成员
+        >Delete Member
         </el-button>
       </template>
     </TableHeader>
@@ -68,7 +68,7 @@
           />
           <el-table-column
             align="center"
-            label="序号"
+            label="Index"
             width="60"
           >
             <template slot-scope="scope">
@@ -83,33 +83,33 @@
           />
           <el-table-column
             align="center"
-            label="用户名"
+            label="Username"
             prop="username"
             width="240px"
           />
           <el-table-column
             align="center"
-            label="邮箱"
+            label="Email"
             prop="email"
             width="320px"
           />
           <el-table-column
             align="center"
-            label="权限"
+            label="Permission"
             prop="power"
             width="100px"
           />
           <el-table-column
             align="center"
-            label="操作"
+            label="Action"
           >
             <template slot-scope="scope">
               <el-popover
                 placement="bottom"
                 width="350"
               >
-                <p>更改成员权限</p>
-                <el-select v-model="form_setPerm.perm" placeholder="请选择权限">
+                <p>Change member permission</p>
+                <el-select v-model="form_setPerm.perm" placeholder="Select permission">
                   <el-option
                     v-for="item in powerOptions"
                     :key="item.value"
@@ -118,32 +118,25 @@
                   />
                 </el-select>
                 <div style="text-align: left; margin: 0">
-                  <el-button size="mini" style="margin-top:10px" @click="setPerm(scope.row)">确定</el-button>
+                  <el-button size="mini" style="margin-top: 10px" @click="setPerm(scope.row)">Confirm</el-button>
                 </div>
                 <el-button
                   slot="reference"
-                  style="margin-inline:10px"
+                  style="margin-inline: 10px"
                   size="mini"
-                >更改成员权限</el-button>
+                >Change Member Permission</el-button>
               </el-popover>
               <el-button
                 size="mini"
                 type="danger"
                 :underline="false"
                 @click="deleteItem(scope.row)"
-              >删除</el-button>
+              >Delete</el-button>
             </template>
           </el-table-column>
         </el-table>
       </template>
     </TableBody>
-    <!--    <TableFooter-->
-    <!--      :page-size="pageModel.pageSize"-->
-    <!--      :total-size="pageModel.totalSize"-->
-    <!--      @pageSizeChanged="pageSizeChanged"-->
-    <!--      @currentChanged="currentChanged"-->
-    <!--      @onRefresh="doRefresh"-->
-    <!--    />-->
   </div>
 </template>
 
@@ -222,15 +215,15 @@ export default {
       powerOptions: [
         {
           value: 1,
-          label: '队长'
+          label: 'captain'
         },
         {
           value: 2,
-          label: '开发者'
+          label: 'developer'
         },
         {
           value: 3,
-          label: '观察者'
+          label: 'observer'
         }
       ],
       userModel: {
@@ -265,29 +258,29 @@ export default {
     },
     deleteItem(item) {
       if (item.id === this.form_deleteMember.user_id) {
-        this.$confirm('此操作将使您退出此团队' + ', 是否继续?', '提示', {
-          confirmButtonText: '确定',
-          cancelButtonText: '取消',
+        this.$confirm('This action will make you leave this team' + ', continue?', 'Prompt', {
+          confirmButtonText: 'Confirm',
+          cancelButtonText: 'Cancel',
           type: 'warning'
-      }).then(() => {
-        this.quitTeam()
+        }).then(() => {
+          this.quitTeam()
         }).catch(() => {
           this.$message({
             type: 'info',
-            message: '已取消操作'
+            message: 'Operation canceled'
           })
         })
       } else {
-        this.$confirm('此操作将踢出用户成员' + item.username + ', 是否继续?', '提示', {
-          confirmButtonText: '确定',
-          cancelButtonText: '取消',
+        this.$confirm('This action will kick out user member ' + item.username + ', continue?', 'Prompt', {
+          confirmButtonText: 'Confirm',
+          cancelButtonText: 'Cancel',
           type: 'warning'
-      }).then(() => {
-        this.deleteMember(item)
+        }).then(() => {
+          this.deleteMember(item)
         }).catch(() => {
           this.$message({
             type: 'info',
-            message: '已取消操作'
+            message: 'Operation canceled'
           })
         })
       }
@@ -296,21 +289,21 @@ export default {
       this.deleteMemberList = items
     },
     deleteMultiItem() {
-      this.$confirm('此操作将踢出您选中的所有成员, 是否继续?', '提示', {
-          confirmButtonText: '确定',
-          cancelButtonText: '取消',
-          type: 'warning'
+      this.$confirm('This action will kick out all selected members, continue?', 'Prompt', {
+        confirmButtonText: 'Confirm',
+        cancelButtonText: 'Cancel',
+        type: 'warning'
       }).then(() => {
         for (let i = 0; i < this.deleteMemberList.length; i++) {
           this.deleteMember(this.deleteMemberList[i])
         }
         this.getMemberList()
-        }).catch(() => {
-          this.$message({
-            type: 'info',
-            message: '已取消踢出'
-          })
+      }).catch(() => {
+        this.$message({
+          type: 'info',
+          message: 'Kick out canceled'
         })
+      })
     },
     deleteMember(item) {
       this.form_deleteMember.deleted_id = item.id
@@ -365,11 +358,11 @@ export default {
               members.username = res.data.team_member_list[i].username
               members.email = res.data.team_member_list[i].email
               if (res.data.team_member_list[i].power === 1) {
-                members.power = '队长'
+                members.power = 'Captain'
               } else if (res.data.team_member_list[i].power === 2) {
-                members.power = '开发者'
+                members.power = 'Developer'
               } else if (res.data.team_member_list[i].power === 3) {
-                members.power = '观察者'
+                members.power = 'Observer'
               }
               let flag = 0
               for (let i = 0; i < this.memberList.length; i++) {
@@ -382,20 +375,20 @@ export default {
               // this.$message.success(res.data.message)
             }
           } else {
-             this.$message.error(res.data.message)
+            this.$message.error(res.data.message)
           }
-           this.loading = false
-         })
+          this.loading = false
+        })
     },
     invite() {
       this.$axios.post('/team/invite_member', qs.stringify(this.form_invite))
-         .then((res) => {
-           if (res.data.result === 6) {
-             this.$message.success(res.data.message)
-           } else {
-             this.$message.error(res.data.message)
-           }
-         })
+        .then((res) => {
+          if (res.data.result === 6) {
+            this.$message.success(res.data.message)
+          } else {
+            this.$message.error(res.data.message)
+          }
+        })
     },
     onRichTextEditor() {
       store.toRichTextEditor && store.toRichTextEditor()
@@ -413,7 +406,7 @@ export default {
     beforeUpload(file) {
       const size = file.size
       if (size / 1024 > 500) {
-        this.$errorMsg('上传文件最大不能超过500K')
+        this.$errorMsg('Uploaded file cannot exceed 500K')
         return false
       }
     }

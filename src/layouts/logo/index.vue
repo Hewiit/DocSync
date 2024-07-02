@@ -12,7 +12,7 @@
       <span
         v-show="!state.isCollapse || alwaysShow"
         class="logo-title"
-      >金刚石文档</span>
+      >DocSync</span>
     </transition>
   </div>
 </template>

@@ -1,7 +1,7 @@
 <template>
   <div class="main-container">
     <TableHeader :can-collapsed="false">
-      <template slot="right">
+      <template v-slot:right>
         <el-button
           v-if="isInited('addItemModel')"
           v-permission="['admin', 'editor']"
@@ -9,7 +9,7 @@
           size="mini"
           icon="el-icon-plus"
           @click="onAddItem"
-        >添加
+        >Add
         </el-button>
         <el-button
           v-if="isInited('deleteItemsModel')"
@@ -17,7 +17,7 @@
           size="mini"
           icon="el-icon-delete"
           @click="onDeleteMultiItem"
-        >删除
+        >Delete
         </el-button>
       </template>
     </TableHeader>
@@ -39,23 +39,23 @@
           />
           <el-table-column
             align="center"
-            label="序号"
+            label="No."
             width="80"
           >
-            <template slot-scope="scope">
+            <template v-slot:default="scope">
               {{ scope.$index + 1 }}
             </template>
           </el-table-column>
           <el-table-column
             align="center"
-            label="名称"
+            label="Name"
             prop="nickName"
           />
           <el-table-column
             align="center"
-            label="头像"
+            label="Avatar"
           >
-            <template slot-scope="scope">
+            <template v-slot:default="scope">
               <div class="avatar-container">
                 <el-image
                   :src="require('@/assets/img_avatar_default.png')"
@@ -72,24 +72,24 @@
           </el-table-column>
           <el-table-column
             align="center"
-            label="性别"
+            label="Gender"
             prop="gender"
           >
-            <template slot-scope="scope">
+            <template v-slot:default="scope">
               <div class="gender-container flex justify-center align-center">
                 <img
                   class="gender-icon"
                   :src="scope.row.gender === 0 ? require('@/assets/icon_sex_man.png') : require('@/assets/icon_sex_woman.png')"
                 />
-                <span>{{ scope.row.gender === 0 ? '男' : '女' }}</span>
+                <span>{{ scope.row.gender === 0 ? 'Male' : 'Female' }}</span>
               </div>
             </template>
           </el-table-column>
           <el-table-column
             align="center"
-            label="状态"
+            label="Status"
           >
-            <template slot-scope="scope">
+            <template v-slot:default="scope">
               <el-switch
                 v-model="scope.row.status"
                 :active-value="1"
@@ -99,38 +99,38 @@
           </el-table-column>
           <el-table-column
             align="center"
-            label="地址"
+            label="Address"
             prop="address"
           />
           <el-table-column
             align="center"
-            label="上次登录时间"
+            label="Last Login Time"
             prop="lastLoginTime"
             width="160px"
           />
           <el-table-column
             align="center"
-            label="上次登录IP"
+            label="Last Login IP"
             prop="lastLoginIp"
             width="130px"
           />
           <el-table-column
             align="center"
-            label="操作"
+            label="Actions"
           >
-            <template slot-scope="scope">
+            <template v-slot:default="scope">
               <el-link
                 v-if="isInited('updateItemModel')"
                 type="primary"
                 :underline="false"
                 @click="onUpdateItem(scope.row)"
-              >编辑</el-link>
+              >Edit</el-link>
               <el-link
                 v-if="isInited('deleteItemsModel')"
                 type="danger"
                 :underline="false"
                 @click="onDeleteItem(scope.row)"
-              >删除</el-link>
+              >Delete</el-link>
             </template>
           </el-table-column>
         </el-table>
@@ -154,7 +154,7 @@
           :form-items="formItems"
         >
           <template #extra>
-            <el-form-item label="上传头像">
+            <el-form-item label="Upload Avatar">
               <SingleUpload
                 action="http://test.youcanedu.net:8881/yx/uploadSpellingTextBookCoverImage"
                 :headers="{'Authorization': `Bearer eyJhbGciOiJIUzUxMiJ9.eyJBdXRob3JpemF0aW9uIjoiUk9MRV9hZG1pbiwiLCJ1c2VyRW50aXR5SWQiOjE4LCJ1c2VyRW50aXR5TmFtZSI6IueuoeeQhuWRmCIsInVzZXJFbnRpdHlQaG9uZSI6IjE4ODAwMDAwMDA4Iiwic3ViIjoi566h55CG5ZGYIiwiZXhwIjoxNjE2MTQ2MjQwfQ.TZS59WlhzJwkbk60OhE7xJMJ2XlIY3gBo_Cnh8yqCooKfyquS_IbSH-d6___nVNAhrMzNq3qDMM2sTZpiQ2IDA`}"
@@ -217,13 +217,13 @@ export default {
     formItems() {
       return formBuilder()
         .formItem({
-          label: '用户名称',
+          label: 'User Name',
           type: 'input',
           name: 'nickName',
           value: this.userModel.nickName,
           maxLength: 50,
           inputType: 'text',
-          placeholder: '请输入用户名称',
+          placeholder: 'Please enter user name',
           associatedOption: 'address',
           validator: ({ value, placeholder }, { value: assValue }) => {
             if (!value) {
@@ -231,51 +231,51 @@ export default {
               return false
             }
             if (!assValue) {
-              this.$errorMsg('地址不正确')
+              this.$errorMsg('Incorrect address')
               return false
             }
             return true
           }
         })
         .formItem({
-          label: '用户性别',
+          label: 'User Gender',
           type: 'radio-group',
           name: 'gender',
           style: 'button',
           value: this.userModel.gender,
           radioOptions: [
             {
-              label: '男',
+              label: 'Male',
               value: 0
             },
             {
-              label: '女',
+              label: 'Female',
               value: 1
             }
           ]
         })
         .formItem({
-          label: '联系地址',
+          label: 'Contact Address',
           type: 'input',
           name: 'address',
           value: this.userModel.address,
           maxLength: 50,
           inputType: 'textarea',
           row: 5,
-          placeholder: '请输入联系地址'
+          placeholder: 'Please enter contact address'
         })
         .formItem({
-          label: '用户状态',
+          label: 'User Status',
           type: 'radio-group',
           name: 'status',
           value: this.userModel.status,
           radioOptions: [
             {
-              label: '正常',
+              label: 'Active',
               value: 1
             },
             {
-              label: '禁用',
+              label: 'Disabled',
               value: 0
             }
           ]
@@ -299,6 +299,7 @@ export default {
     }).then(() => {
       this.getData()
     })
+
     this.initAddItem({
       url: this.$urlPath.getTableList,
       params: () => {
@@ -327,7 +328,7 @@ export default {
         })
       },
       onResult: (res) => {
-        this.$successMsg('用户信息模拟添加成功')
+        this.$successMsg('Simulated user information added successfully')
         const params = this.$refs.baseForm.generatorParams()
         params.avatar =
           'https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201411%2F29%2F20141129194517_5Z2Lu.png&refer=http%3A%2F%2Fb-ssl.duitang.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1615013287&t=832537ff575fa5c5bb2e65b71c2b52fb'
@@ -343,6 +344,7 @@ export default {
         this.$refs.dialog.close()
       }
     })
+
     this.initUpdateItem({
       url: this.$urlPath.updateUserInfo,
       params: () => {
@@ -364,7 +366,7 @@ export default {
         })
       },
       onResult: (res) => {
-        this.$successMsg('用户信息模拟修改成功')
+        this.$successMsg('Simulated user information updated successfully')
         this.$refs.dialog.close()
       },
       onError: (error) => {
@@ -372,6 +374,7 @@ export default {
         this.$refs.dialog.close()
       }
     })
+
     this.initDeleteItem({
       url: this.$urlPath.getTableList,
       params: () => {
@@ -386,16 +389,16 @@ export default {
       },
       onDeleteItem: (item) => {
         this.tempItem = item
-        this.$showConfirmDialog('确定要删除此用户信息吗？').then((_) => {
-          this.$successMsg('用户模拟删除成功')
-          // 纯前端环境下，可以使用这种方式模拟，真实的环境下，要替换成 this.doDeleteItem('single')
+        this.$showConfirmDialog('Are you sure you want to delete this user information?').then((_) => {
+          this.$successMsg('Simulated user deletion successful')
+          // In a pure frontend environment, simulate like this. In a real environment, replace with this.doDeleteItem('single')
           this.dataList = this.dataList.filter((it) => it.id !== item.id)
         })
       },
       onDeleteMultiItem: () => {
-        this.$showConfirmDialog('确定要删除这些用户信息吗？').then((_) => {
-          this.$successMsg('用户模拟删除成功')
-          // 纯前端环境下，可以使用这种方式模拟，真实的环境下，要替换成 this.doDeleteItem('multi')
+        this.$showConfirmDialog('Are you sure you want to delete these user information?').then((_) => {
+          this.$successMsg('Simulated user deletion successful')
+          // In a pure frontend environment, simulate like this. In a real environment, replace with this.doDeleteItem('multi')
           const tempIds = this.selectedItems.map((it) => it.id)
           this.dataList = this.dataList.filter((it) => !tempIds.includes(it.id))
         })
@@ -404,6 +407,7 @@ export default {
       onError: () => { }
     })
   },
+
   methods: {
     onSingleSuccess({ res }) {
       if (res.status !== 200) {
@@ -412,10 +416,11 @@ export default {
         this.userModel = res.obj
       }
     },
+
     beforeUpload(file) {
       const size = file.size
       if (size / 1024 > 500) {
-        this.$errorMsg('上传文件最大不能超过500K')
+        this.$errorMsg('Uploaded file cannot exceed 500K')
         return false
       }
     }

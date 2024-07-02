@@ -11,19 +11,19 @@
         width="450"
         height="400"
       >
-        <p>搜索文档</p>
+        <p>Search Documents</p>
         <el-input
           v-model="form_getSearchWordList.word_name"
-          placeholder="输入文件名"
-          style="width: 80%;margin: auto"
+          placeholder="Enter file name"
+          style="width: 80%; margin: auto"
         />
         <div style="text-align: left; margin: 0">
-          <el-button size="mini" style="margin-top:10px" @click="getSearchWordList()">确定</el-button>
+          <el-button size="mini" style="margin-top:10px" @click="getSearchWordList()">Confirm</el-button>
         </div>
         <el-table v-loading="loading" :data="searchWordList" height="400">
           <el-table-column width="80" property="word_id" label="ID" align="center" />
-          <el-table-column width="140" property="name" label="名称" align="center" />
-          <el-table-column width="200" label="操作" align="center">
+          <el-table-column width="140" property="name" label="Name" align="center" />
+          <el-table-column width="200" label="Actions" align="center">
             <template slot-scope="scope">
               <el-button
                 size="mini"
@@ -32,7 +32,7 @@
                 text-align="left"
                 icon="el-icon-view"
                 @click="viewSearchWord(scope.row)"
-              >查看</el-button>
+              >View</el-button>
               <el-button
                 size="mini"
                 type="warning"
@@ -40,7 +40,7 @@
                 text-align="left"
                 icon="el-icon-star-on"
                 @click="Like(scope.row)"
-              >收藏</el-button>
+              >Favorite</el-button>
             </template>
           </el-table-column>
         </el-table>
@@ -49,7 +49,7 @@
           style="margin-inline:10px"
           size="mini"
           icon="el-icon-search"
-        >搜索
+        >Search
         </el-button>
       </el-popover>
     </div>

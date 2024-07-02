@@ -61,7 +61,7 @@ export const routes = [
         name: 'personalCenter',
         component: () => import('@/views/personal'),
         meta: {
-          title: '个人中心'
+          title: 'Personal Center'
         }
       }
     ]
@@ -77,7 +77,7 @@ export const routes = [
         name: 'richText',
         component: () => import('@/views/editor/rich-text'),
         meta: {
-          title: '文档编辑'
+          title: 'Document editing'
         }
       }
     ]
@@ -93,7 +93,7 @@ export const routes = [
         name: 'richTextGroup',
         component: () => import('@/views/editor/rich-text-group'),
         meta: {
-          title: '团队文档编辑'
+          title: 'Team document editing'
         }
       }
     ]
@@ -109,7 +109,7 @@ export const routes = [
         name: 'richTextReadOnly',
         component: () => import('@/views/editor/rich-text-readonly'),
         meta: {
-          title: '只读文档'
+          title: 'Read-only documents'
         }
       }
     ]
@@ -125,7 +125,7 @@ export const routes = [
         name: 'tableTemplate',
         component: () => import('@/views/list/table-template'),
         meta: {
-          title: '模板选择'
+          title: 'Template selection'
         }
       }
     ]
@@ -141,7 +141,7 @@ export const routes = [
         name: 'tableLatest',
         component: () => import('@/views/list/table-latest'),
         meta: {
-          title: '最近浏览文件'
+          title: 'Recently viewed files'
         }
       }
     ]
@@ -157,7 +157,7 @@ export const routes = [
         name: 'tableLike',
         component: () => import('@/views/list/table-like'),
         meta: {
-          title: '最近收藏文件'
+          title: 'Recent favorites'
         }
       }
     ]
@@ -173,7 +173,7 @@ export const routes = [
         name: 'tableCreated',
         component: () => import('@/views/list/table-created'),
         meta: {
-          title: '个人文件'
+          title: 'Personal documents'
         }
       }
     ]
@@ -189,7 +189,7 @@ export const routes = [
         name: 'tableShare',
         component: () => import('@/views/list/table-share'),
         meta: {
-          title: '共享给我'
+          title: 'Share with me'
         }
       }
     ]
@@ -205,7 +205,7 @@ export const routes = [
         name: 'tableGroup',
         component: () => import('@/views/list/table-group'),
         meta: {
-          title: '团队空间'
+          title: 'Team Spaces'
         }
       }
     ]
@@ -221,7 +221,7 @@ export const routes = [
         name: 'tableGroupFile',
         component: () => import('@/views/list/table-group-file'),
         meta: {
-          title: '团队文件'
+          title: 'Team files'
         }
       }
     ]
@@ -237,7 +237,7 @@ export const routes = [
         name: 'tableGroupMember',
         component: () => import('@/views/list/table-group-member'),
         meta: {
-          title: '团队成员'
+          title: 'Team members'
         }
       }
     ]
@@ -253,7 +253,7 @@ export const routes = [
         name: 'tableRecover',
         component: () => import('@/views/list/table-recover'),
         meta: {
-          title: '个人文件回收站'
+          title: 'Personal file recycle bin'
         }
       }
     ]
@@ -269,7 +269,7 @@ export const routes = [
         name: 'tableGroupRecover',
         component: () => import('@/views/list/table-group-recover'),
         meta: {
-          title: '团队文件回收站'
+          title: 'Team file recycle bin'
         }
       }
     ]

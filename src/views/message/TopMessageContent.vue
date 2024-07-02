@@ -2,7 +2,7 @@
   <div style="width: 280px">
     <el-tabs v-model="activeName">
       <el-tab-pane
-        :label="`通知${notifyNum}`"
+        :label="`Notification ${notifyNum}`"
         name="notify"
       >
         <NotifyItem class="item" />
@@ -15,17 +15,17 @@
             :underline="false"
             class="flex-sub text-center"
             @click="clear('notify')"
-          >清空通知</el-link>
+          >Clear Notifications</el-link>
           <div class="text-gray">|</div>
           <el-link
             :underline="false"
             class="flex-sub text-center"
             @click="more('notify')"
-          >查看更多</el-link>
+          >See More</el-link>
         </div>
       </el-tab-pane>
       <el-tab-pane
-        :label="`消息${messageNum}`"
+        :label="`Messages ${messageNum}`"
         name="message"
       >
         <MessageItem class="item" />
@@ -38,17 +38,17 @@
             :underline="false"
             class="flex-sub text-center"
             @click="clear('message')"
-          >清空消息</el-link>
+          >Clear Messages</el-link>
           <div class="text-gray">|</div>
           <el-link
             :underline="false"
             class="flex-sub text-center"
             @click="more('message')"
-          >查看更多</el-link>
+          >See More</el-link>
         </div>
       </el-tab-pane>
       <el-tab-pane
-        :label="`待办${todoNum}`"
+        :label="`To-do ${todoNum}`"
         name="todo"
       >
         <TodoItem class="item" />
@@ -61,13 +61,13 @@
             :underline="false"
             class="flex-sub text-center"
             @click="clear('todo')"
-          >清空待办</el-link>
+          >Clear To-dos</el-link>
           <div class="text-gray">|</div>
           <el-link
             :underline="false"
             class="flex-sub text-center"
             @click="more('todo')"
-          >查看更多</el-link>
+          >See More</el-link>
         </div>
       </el-tab-pane>
     </el-tabs>

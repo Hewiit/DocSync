@@ -2,7 +2,7 @@
   <div class="project-container">
     <el-row class="row-wrapper">
       <el-col :span="6">
-        当前版本
+        Current version
       </el-col>
       <el-col :span="18">
         {{ currentVersion }}

@@ -98,7 +98,6 @@ export default {
     getFullPath(item) {
       return path.resolve(this.basePath, item.path)
     },
-    // inited 标志是否要查找第一个元素
     changeTab(item, inited = true) {
       this.tabs.forEach((it) => {
         it.active = it.path === item.path

@@ -7,23 +7,22 @@
     >
       <div class="text-center"><i class="el-icon-success icon"></i></div>
       <div class="result">
-        提交成功
+        Submission Successful
       </div>
       <div class="tip">
-        提交结果页用于反馈一系列操作任务的处理结果， 如果仅是简单操作，使用 Message 全局提示反馈即可。 本文字区域可以展示简单的补充说明，如果有类似展示 “单据”的需求，下面这个灰色区域可以呈现比较复杂的内容。
+        The submission result page is used to provide feedback on a series of operational tasks. For simple operations, you can use the Message global prompt feedback. This text area can display simple supplementary explanations. If there is a need to display "documents" or similar, the gray area below can present more complex content.
       </div>
       <div class="text-center action">
         <el-button
           type="primary"
           size="small"
-        >返回列表</el-button>
-        <el-button size="small">查看项目</el-button>
-        <el-button size="small">打印</el-button>
+        >Return to List</el-button>
+        <el-button size="small">View Project</el-button>
+        <el-button size="small">Print</el-button>
       </div>
     </el-card>
   </div>
 </template>
-
 <script>
 export default {
   name: 'Success'

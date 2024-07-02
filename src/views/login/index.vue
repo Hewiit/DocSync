@@ -10,13 +10,13 @@
       <div class="left"></div>
       <div class="right">
         <div class="my-width flex-sub flex justify-center align-center">
-          <div class="title margin-left">欢迎来到 金刚石文档</div>
+          <div class="title margin-left" style="color: deepskyblue">Welcome to DocSync</div>
         </div>
         <el-form :model="form" class="form-container">
           <div class="item-wrapper">
             <el-input
               v-model="form.username"
-              placeholder="请输入用户名/邮箱"
+              placeholder="Please enter username/email"
               prefix-icon="el-icon-user"
               clearable
             />
@@ -24,16 +24,10 @@
           <div class="item-wrapper margin-top-lg">
             <el-input
               v-model="form.password"
-              placeholder="请输入密码"
+              placeholder="Please enter password"
               type="password"
               clearable
               prefix-icon="el-icon-lock"
-            />
-          </div>
-          <div class="item-wrapper">
-            <VawVerify
-              class="margin-top-lg"
-              @verify-success="onVerifySuccess"
             />
           </div>
           <div class="flex-sub"></div>
@@ -43,7 +37,7 @@
               class="login"
               @click="login"
             >
-              登录
+              Login
             </el-button>
           </div>
           <div class="margin-top-rg">
@@ -53,18 +47,18 @@
               class="login"
               @click="register"
             >
-              注册
+              Register
             </el-button>
           </div>
         </el-form>
         <div class="my-width flex-sub margin-top">
           <div class="flex justify-between">
-            <el-checkbox v-model="autoLogin" style="color: #ffffff">自动登录</el-checkbox>
+            <el-checkbox v-model="autoLogin" style="color: #ffffff">Auto Login</el-checkbox>
             <el-link
               :underline="false"
               style="color: #ffffff"
               @click="forget"
-            >忘记密码？</el-link>
+            >Forgot Password?</el-link>
           </div>
         </div>
       </div>
@@ -76,7 +70,7 @@
 </template>
 
 <script>
-import ImageBg1 from '@/assets/img_login_bg_01.jpg'
+import ImageBg1 from '@/assets/img_login_bg_01.png'
 import ImageMobileBg1 from '@/assets/img_login_mobile_bg_01.jpg'
 import PageFooter from '@/layouts/footer'
 import VawVerify from 'vaw-verify'
@@ -120,27 +114,22 @@ export default {
   methods: {
     login() {
       if (!this.form.username) {
-        this.$errorMsg('请输入用户名')
+        this.$errorMsg('Please enter username')
         return
       }
       if (!this.form.password) {
-        this.$errorMsg('请输入密码')
+        this.$errorMsg('Please enter password')
         return
       }
-      if (!this.verifyState) {
-        this.$errorMsg('滑动验证失败')
-        return
-      }
-       this.$axios.post(
-       '/user/login',
-         qs.stringify(this.form)
+      this.$axios.post(
+        '/user/login',
+        qs.stringify(this.form)
       )
         .then((res) => {
           data.userName = res.data.username
           data.userId = res.data.user_id
           data.token = res.data.authorization
           data.avatar = res.data.avatar
-          // data.unlook_message_count = res.data.unlook_message_count
           if (res.data.result === 2) {
             this.$store
               .dispatch('user/saveUserInfo', data)
@@ -152,7 +141,7 @@ export default {
           }
         })
         .catch((error) => {
-          this.$errorMsg(error.message || '登录失败，未知异常')
+          this.$errorMsg(error.message || 'Login failed, unknown error')
         })
     },
     onVerifySuccess() {
@@ -191,7 +180,7 @@ export default {
       width: 50px;
     }
     & img::after {
-      content: "欢迎来到金刚石文档";
+      content: "Welcome to DocSync";
     }
   }
   .login-footer-wrapper {

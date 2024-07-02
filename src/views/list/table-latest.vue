@@ -6,61 +6,61 @@
           size="mini"
           icon="el-icon-plus"
           @click="dialogFormVisible = true"
-        >创建
+        >Create
         </el-button>
       </template>
     </TableHeader>
-    <el-dialog title="创建个人文档" :visible.sync="dialogFormVisible">
+    <el-dialog title="Create Personal Document" :visible.sync="dialogFormVisible">
       <el-form :model="form2">
-        <el-form-item label="文档名称" :label-width="formLabelWidth">
+        <el-form-item label="Document Name" :label-width="formLabelWidth">
           <el-input v-model="form2.word_name" autocomplete="off" />
         </el-form-item>
-        <el-form-item label="是否公开" :label-width="formLabelWidth">
-          <el-radio v-model="radio" label="1">是</el-radio>
-          <el-radio v-model="radio" label="0">否</el-radio>
+        <el-form-item label="Public Access" :label-width="formLabelWidth">
+          <el-radio v-model="radio" label="1">Yes</el-radio>
+          <el-radio v-model="radio" label="0">No</el-radio>
         </el-form-item>
-        <el-form-item label="选择模板" :label-width="formLabelWidth">
+        <el-form-item label="Choose Template" :label-width="formLabelWidth">
           <el-row>
             <el-col :span="8">
               <el-card v-model="radio2" :body-style="{ padding: '0px' }">
                 <img src="../../assets/template0.jpg" class="image" />
                 <div style="padding: 14px;">
-                  <span>空白文档</span>
+                  <span>Blank Document</span>
                   <div class="bottom clearfix">
-                    <el-button type="text" class="button" @click="create0">创建</el-button>
+                    <el-button type="text" class="button" @click="create0">Create</el-button>
                   </div>
                 </div>
               </el-card>
             </el-col>
             <el-col :span="8">
               <el-card v-model="radio2" :body-style="{ padding: '0px' }">
-                <img src="../../assets/template1.jpg" class="image" />
+                <img src="../../assets/template1.png" class="image" />
                 <div style="padding: 14px;">
-                  <span>会议纪要</span>
+                  <span>Meeting Summary</span>
                   <div class="bottom clearfix">
-                    <el-button type="text" class="button" @click="create1">创建</el-button>
+                    <el-button type="text" class="button" @click="create1">Create</el-button>
                   </div>
                 </div>
               </el-card>
             </el-col>
             <el-col :span="8">
               <el-card :body-style="{ padding: '0px' }">
-                <img src="../../assets/template2.jpg" class="image" />
+                <img src="../../assets/template2.png" class="image" />
                 <div style="padding: 14px;">
-                  <span>待办事项</span>
+                  <span>To-Do List</span>
                   <div class="bottom clearfix">
-                    <el-button type="text" class="button" @click="create2">创建</el-button>
+                    <el-button type="text" class="button" @click="create2">Create</el-button>
                   </div>
                 </div>
               </el-card>
             </el-col>
             <el-col :span="8">
               <el-card :body-style="{ padding: '0px' }">
-                <img src="../../assets/template3.jpg" class="image" />
+                <img src="../../assets/template3.png" class="image" />
                 <div style="padding: 14px;">
-                  <span>工作清单</span>
+                  <span>Work Checklist</span>
                   <div class="bottom clearfix">
-                    <el-button type="text" class="button" @click="create3">创建</el-button>
+                    <el-button type="text" class="button" @click="create3">Create</el-button>
                   </div>
                 </div>
               </el-card>
@@ -69,7 +69,7 @@
         </el-form-item>
       </el-form>
       <div slot="footer" class="dialog-footer">
-        <el-button @click="dialogFormVisible = false">取 消</el-button>
+        <el-button @click="dialogFormVisible = false">Cancel</el-button>
       </div>
     </el-dialog>
     <TableBody ref="tableBody">
@@ -90,7 +90,7 @@
           />
           <el-table-column
             align="center"
-            label="序号"
+            label="Index"
             width="60"
           >
             <template slot-scope="scope">
@@ -99,36 +99,36 @@
           </el-table-column>
           <el-table-column
             align="center"
-            label="文件名"
+            label="File Name"
             prop="name"
           />
           <el-table-column
             align="center"
-            label="文件id"
+            label="File ID"
             prop="word_id"
             width="100"
           />
           <el-table-column
             align="center"
-            label="最后打开时间"
+            label="Last Opened"
             prop="open_time"
             width="180"
           />
           <el-table-column
             align="center"
-            label="是否有人编辑"
+            label="Being Edited"
             prop="is_editing"
             width="100"
           />
           <el-table-column
             align="center"
-            label="是否公开"
+            label="Public Access"
             prop="open"
             width="80"
           />
           <el-table-column
             align="center"
-            label="操作"
+            label="Action"
             width="120"
           >
             <template slot-scope="scope">
@@ -137,7 +137,7 @@
                 :underline="false"
                 icon="el-icon-reading"
                 @click="onRichTextEditor(scope.row)"
-              >查看</el-button>
+              >View</el-button>
             </template>
           </el-table-column>
         </el-table>
@@ -247,8 +247,8 @@ export default {
               words.edit_time = res.data.history[i].edit_time
               words.open_time = res.data.history[i].open_time
               words.last_id = res.data.history[i].last_edit_user_id
-              words.is_editing = res.data.history[i].is_editing === 1 ? '是' : '否'
-              words.open = res.data.history[i].open === 1 ? '是' : '否'
+              words.is_editing = res.data.history[i].is_editing === 1 ? 'yes' : 'no'
+              words.open = res.data.history[i].open === 1 ? 'yes' : 'no'
               let flag = 0
               for (let i = 0; i < this.wordList.length; i++) {
                 if (this.wordList[i].word_id === words.word_id) {
@@ -290,7 +290,7 @@ export default {
     beforeUpload(file) {
       const size = file.size
       if (size / 1024 > 500) {
-        this.$errorMsg('上传文件最大不能超过500K')
+        this.$errorMsg('Uploaded file size cannot exceed 500')
         return false
       }
     },

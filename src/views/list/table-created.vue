@@ -1,73 +1,73 @@
 <template>
   <div class="main-container">
     <TableHeader :can-collapsed="false">
-      <template slot="right">
+      <template v-slot:right>
         <el-button
           size="mini"
           icon="el-icon-plus"
           @click="dialogFormVisible = true"
-        >创建
+        >Create
         </el-button>
         <el-button
           type="danger"
           size="mini"
           icon="el-icon-delete"
           @click="deleteMultiItem"
-        >删除
+        >Delete
         </el-button>
       </template>
     </TableHeader>
-    <el-dialog title="创建个人文档" :visible.sync="dialogFormVisible">
+    <el-dialog title="Create Personal Document" :visible.sync="dialogFormVisible">
       <el-form :model="form2">
-        <el-form-item label="文档名称" :label-width="formLabelWidth">
+        <el-form-item label="Document Name" :label-width="formLabelWidth">
           <el-input v-model="form2.word_name" autocomplete="off" />
         </el-form-item>
-        <el-form-item label="是否公开" :label-width="formLabelWidth">
-          <el-radio v-model="radio" label="1">是</el-radio>
-          <el-radio v-model="radio" label="0">否</el-radio>
+        <el-form-item label="Public?" :label-width="formLabelWidth">
+          <el-radio v-model="radio" label="1">Yes</el-radio>
+          <el-radio v-model="radio" label="0">No</el-radio>
         </el-form-item>
-        <el-form-item label="选择模板" :label-width="formLabelWidth">
+        <el-form-item label="Select Template" :label-width="formLabelWidth">
           <el-row>
             <el-col :span="8">
               <el-card v-model="radio2" :body-style="{ padding: '0px' }">
                 <img src="../../assets/template0.jpg" class="image" />
                 <div style="padding: 14px;">
-                  <span>空白文档</span>
+                  <span>Blank Document</span>
                   <div class="bottom clearfix">
-                    <el-button type="text" class="button" @click="create0">创建</el-button>
+                    <el-button type="text" class="button" @click="create0">Create</el-button>
                   </div>
                 </div>
               </el-card>
             </el-col>
             <el-col :span="8">
               <el-card v-model="radio2" :body-style="{ padding: '0px' }">
-                <img src="../../assets/template1.jpg" class="image" />
+                <img src="../../assets/template1.png" class="image" />
                 <div style="padding: 14px;">
-                  <span>会议纪要</span>
+                  <span>Meeting Summary</span>
                   <div class="bottom clearfix">
-                    <el-button type="text" class="button" @click="create1">创建</el-button>
+                    <el-button type="text" class="button" @click="create1">Create</el-button>
                   </div>
                 </div>
               </el-card>
             </el-col>
             <el-col :span="8">
               <el-card :body-style="{ padding: '0px' }">
-                <img src="../../assets/template2.jpg" class="image" />
+                <img src="../../assets/template2.png" class="image" />
                 <div style="padding: 14px;">
-                  <span>待办事项</span>
+                  <span>To-Do List</span>
                   <div class="bottom clearfix">
-                    <el-button type="text" class="button" @click="create2">创建</el-button>
+                    <el-button type="text" class="button" @click="create2">Create</el-button>
                   </div>
                 </div>
               </el-card>
             </el-col>
             <el-col :span="8">
               <el-card :body-style="{ padding: '0px' }">
-                <img src="../../assets/template3.jpg" class="image" />
+                <img src="../../assets/template3.png" class="image" />
                 <div style="padding: 14px;">
-                  <span>工作清单</span>
+                  <span>Worklist</span>
                   <div class="bottom clearfix">
-                    <el-button type="text" class="button" @click="create3">创建</el-button>
+                    <el-button type="text" class="button" @click="create3">Create</el-button>
                   </div>
                 </div>
               </el-card>
@@ -76,7 +76,7 @@
         </el-form-item>
       </el-form>
       <div slot="footer" class="dialog-footer">
-        <el-button @click="dialogFormVisible = false">取 消</el-button>
+        <el-button @click="dialogFormVisible = false">Cancel</el-button>
       </div>
     </el-dialog>
     <TableBody ref="tableBody">
@@ -97,86 +97,86 @@
           />
           <el-table-column
             align="center"
-            label="序号"
+            label="No."
             width="60"
           >
-            <template slot-scope="scope">
+            <template v-slot:default="scope">
               {{ scope.$index + 1 }}
             </template>
           </el-table-column>
           <el-table-column
             align="center"
-            label="文件名"
+            label="File Name"
             prop="name"
           />
           <el-table-column
             align="center"
-            label="文件id"
+            label="File ID"
             prop="word_id"
             width="100"
           />
           <el-table-column
             align="center"
-            label="创建时间"
+            label="Creation Time"
             prop="create_time"
             width="180"
           />
           <el-table-column
             align="center"
-            label="是否有人编辑"
+            label="Being Edited?"
             prop="is_editing"
             width="100"
           />
           <el-table-column
             align="center"
-            label="是否公开"
+            label="Public"
             prop="open"
             width="80"
           />
           <el-table-column
             align="center"
-            label="操作"
+            label="Actions"
             width="260"
           >
-            <template slot-scope="scope">
+            <template v-slot:default="scope">
               <el-button
                 size="mini"
                 :underline="false"
                 icon="el-icon-edit"
                 @click="onRichTextEditor(scope.row)"
-              >编辑</el-button>
+              >Edit</el-button>
               <el-popover
                 placement="top"
                 width="350"
               >
-                <p>文档管理</p>
+                <p>Document Management</p>
                 <el-button
-                  v-if="scope.row.open === '是'"
+                  v-if="scope.row.open === 'Yes'"
                   size="mini"
                   type="warning"
                   :underline="false"
                   @click="openWord(scope.row)"
-                >设置为私有</el-button>
+                >Set to Private</el-button>
                 <el-button
-                  v-if="scope.row.open === '否'"
+                  v-if="scope.row.open === 'No'"
                   size="mini"
                   :underline="false"
                   @click="openWord(scope.row)"
-                >设置为公开</el-button>
+                >Set to Public</el-button>
                 <el-button
                   size="mini"
                   type="danger"
                   :underline="false"
                   icon="el-icon-unlock"
                   @click="unlock(scope.row)"
-                >强制解锁</el-button>
+                >Force Unlock</el-button>
                 <el-button
                   slot="reference"
                   style="margin-inline:10px"
                   type="info"
                   size="mini"
                   icon="el-icon-setting"
-                >管理
+                >Manage
                 </el-button>
               </el-popover>
               <el-button
@@ -185,19 +185,12 @@
                 :underline="false"
                 icon="el-icon-delete"
                 @click="deleteItem(scope.row)"
-              >删除</el-button>
+              >Delete</el-button>
             </template>
           </el-table-column>
         </el-table>
       </template>
     </TableBody>
-    <!--    <TableFooter-->
-    <!--      :page-size="pageModel.pageSize"-->
-    <!--      :total-size="pageModel.totalSize"-->
-    <!--      @pageSizeChanged="pageSizeChanged"-->
-    <!--      @currentChanged="currentChanged"-->
-    <!--      @onRefresh="doRefresh"-->
-    <!--    />-->
   </div>
 </template>
 
@@ -276,7 +269,7 @@ export default {
   methods: {
     openWord(item) {
       this.form_openWord.word_id = item.word_id
-      this.form_openWord.open = item.open === '是' ? 0 : 1
+      this.form_openWord.open = item.open === 'yes' ? 0 : 1
       this.$axios.post('/worddocx/user_edit_open_word', qs.stringify(this.form_openWord))
         .then(res => {
             if (res.data.result === 4) {
@@ -353,8 +346,8 @@ export default {
               words.create_time = res.data.word_message_list[i].create_time
               words.edit_time = res.data.word_message_list[i].edit_time
               words.last_id = res.data.word_message_list[i].last_edit_user_id
-              words.is_editing = res.data.word_message_list[i].is_editing === 1 ? '是' : '否'
-              words.open = res.data.word_message_list[i].open === 1 ? '是' : '否'
+              words.is_editing = res.data.word_message_list[i].is_editing === 1 ? 'yes' : 'no'
+              words.open = res.data.word_message_list[i].open === 1 ? 'yes' : 'no'
               let flag = 0
               for (let i = 0; i < this.wordList.length; i++) {
                 if (this.wordList[i].word_id === words.word_id) {
@@ -414,40 +407,35 @@ export default {
         })
     },
     deleteItem(item) {
-      this.$confirm('此操作将永久删除此文件, 是否继续?', '提示', {
-          confirmButtonText: '确定',
-          cancelButtonText: '取消',
-          type: 'warning'
+      this.$confirm('This action will permanently delete this file. Continue?', 'Warning', {
+        confirmButtonText: 'Confirm',
+        cancelButtonText: 'Cancel',
+        type: 'warning'
       }).then(() => {
         this.onDelete(item)
-          // console.log(item.id)
-          // this.$message({
-          //   type: 'success',
-          //   message: '解散成功!'
-          // })
-        }).catch(() => {
-          this.$message({
-            type: 'info',
-            message: '已取消删除'
-          })
+      }).catch(() => {
+        this.$message({
+          type: 'info',
+          message: 'Deletion canceled'
         })
+      })
     },
     deleteMultiItem() {
-      this.$confirm('此操作将永久删除您选中的所有文件, 是否继续?', '提示', {
-          confirmButtonText: '确定',
-          cancelButtonText: '取消',
-          type: 'warning'
+      this.$confirm('This action will permanently delete all selected files. Continue?', 'Warning', {
+        confirmButtonText: 'Confirm',
+        cancelButtonText: 'Cancel',
+        type: 'warning'
       }).then(() => {
         for (let i = 0; i < this.deleteWordList.length; i++) {
           this.onDelete(this.deleteWordList[i])
         }
         this.Refresh()
-        }).catch(() => {
-          this.$message({
-            type: 'info',
-            message: '已取消删除'
-          })
+      }).catch(() => {
+        this.$message({
+          type: 'info',
+          message: 'Deletion canceled'
         })
+      })
     },
     handleSelectionChange(items) {
       this.deleteWordList = items
@@ -465,7 +453,7 @@ export default {
     beforeUpload(file) {
       const size = file.size
       if (size / 1024 > 500) {
-        this.$errorMsg('上传文件最大不能超过500K')
+        this.$errorMsg('Uploaded file size cannot exceed 500K')
         return false
       }
     }

@@ -15,7 +15,7 @@
       >
         <i class="el-icon-close"></i>
       </div>
-      <el-divider content-position="center">主题风格</el-divider>
+      <el-divider content-position="center">Theme Style</el-divider>
       <el-row :gutter="5">
         <el-col
           v-for="(item, index) of styleExampleList"
@@ -32,7 +32,7 @@
           />
         </el-col>
       </el-row>
-      <el-divider content-position="center">布局模式</el-divider>
+      <el-divider content-position="center">Layout</el-divider>
       <el-row :gutter="5">
         <el-col
           v-for="(item, index) of layoutExampleList"
@@ -51,7 +51,7 @@
           />
         </el-col>
       </el-row>
-      <el-divider content-position="center">主题颜色</el-divider>
+      <el-divider content-position="center">Theme</el-divider>
       <div class="colors-wrapper">
         <div
           v-for="(item, index) of primartyColorList"
@@ -63,28 +63,28 @@
         ></div>
       </div>
       <div style="height: 20px"></div>
-      <el-divider content-position="center">按钮显示</el-divider>
+      <el-divider content-position="center">Button</el-divider>
       <div class="setting-item-wrapper">
-        <span>固定顶部导航</span>
+        <span>Navigation</span>
         <el-switch
           v-model="state.isFixedNavBar"
           :disabled="state.layoutMode === 'ttb'"
         />
       </div>
       <div class="setting-item-wrapper">
-        <span>搜索</span>
+        <span>Search</span>
         <el-switch v-model="state.actionItem.showSearch" />
       </div>
       <div class="setting-item-wrapper">
-        <span>消息</span>
+        <span>message</span>
         <el-switch v-model="state.actionItem.showMessage" />
       </div>
       <div class="setting-item-wrapper">
-        <span>刷新</span>
+        <span>renew</span>
         <el-switch v-model="state.actionItem.showRefresh" />
       </div>
       <div class="setting-item-wrapper">
-        <span>全屏</span>
+        <span>fullScreen</span>
         <el-switch v-model="state.actionItem.showFullScreen" />
       </div>
       <el-divider />
@@ -132,7 +132,7 @@ export default {
           rightBottomBg: '#d4d4d4',
           checked: true,
           layoutId: 'ltr',
-          tipText: '左右'
+          tipText: 'left or right'
         },
         {
           leftBg: '#d4d4d4',
@@ -141,7 +141,7 @@ export default {
           checked: false,
           layoutId: 'ttb',
           class: 'extra-class',
-          tipText: '上下'
+          tipText: 'up or down'
         },
         {
           leftBg: '#000000',
@@ -150,7 +150,7 @@ export default {
           checked: false,
           layoutId: 'lcr',
           class: 'extra-class-1',
-          tipText: '分栏'
+          tipText: 'divider'
         }
       ],
       primartyColorList: [

@@ -12,7 +12,7 @@ import LayoutStore from '@/layouts/index'
 import { resetRouter } from './router/index'
 import Cookies from 'js-cookie'
 Vue.prototype.$axios = axios
-axios.defaults.baseURL = 'http://124.220.205.84:8000/'
+axios.defaults.baseURL = 'http://49.235.148.137:8000/'
 Vue.use(LayoutStore, {
   state: {
     isFixedNavBar: true,

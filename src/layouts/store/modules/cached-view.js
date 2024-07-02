@@ -18,7 +18,6 @@ export default {
     this.addEmptyRouteName()
   },
   resetCachedView() {
-    // 从已经访问过的页面的数组中过滤可缓存的页面
     this.state.cachedView = this.state.visitedView.filter((it, index) => {
       return it.name && it.meta && it.meta.cacheable
     }).map(it => toHump(it.name))

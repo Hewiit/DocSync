@@ -1,14 +1,14 @@
 <template>
   <div class="main-container">
     <TableHeader :can-collapsed="false">
-      <template slot="right">
+      <template v-slot:right>
         <el-button
           v-if="isInited('addItemModel')"
           v-permission="['admin', 'editor']"
           size="mini"
           icon="el-icon-plus"
           @click="onAddItem"
-        >添加
+        >Add
         </el-button>
         <el-button
           v-if="isInited('deleteItemsModel')"
@@ -16,25 +16,25 @@
           size="mini"
           icon="el-icon-delete"
           @click="onDeleteMultiItem"
-        >删除
+        >Delete
         </el-button>
       </template>
     </TableHeader>
     <TableBody ref="tableBody">
       <template #tableHeader>
         <div class="flex justify-between padding">
-          <el-link :underline="false">表格设置</el-link>
+          <el-link :underline="false">Table Settings</el-link>
           <div>
             <span class="margin-right">
-              <el-checkbox v-model="tableConfig.border">表格边框</el-checkbox>
+              <el-checkbox v-model="tableConfig.border">Table Border</el-checkbox>
             </span>
             <span class="margin-right">
-              <el-checkbox v-model="tableConfig.stripe">斑马纹</el-checkbox>
+              <el-checkbox v-model="tableConfig.stripe">Zebra Stripes</el-checkbox>
             </span>
             <el-tooltip
               class="item"
               effect="dark"
-              content="刷新页面"
+              content="Refresh Page"
               placement="top"
             >
               <el-button
@@ -70,21 +70,21 @@
           />
           <el-table-column
             align="center"
-            label="序号"
+            label="No."
             width="80"
           >
-            <template slot-scope="scope">
+            <template v-slot:default="scope">
               {{ scope.$index + 1 }}
             </template>
           </el-table-column>
           <el-table-column
-            v-for="item of tableProps"
-            :key="item.props"
+            v-for="item in tableProps"
+            :key="item.prop"
             align="center"
             :prop="item.prop"
             :label="item.title"
           >
-            <template slot-scope="scope">
+            <template v-slot:default="scope">
               <div
                 v-if="item.prop === 'gender'"
                 class="gender-container flex justify-center align-center"
@@ -93,7 +93,7 @@
                   class="gender-icon"
                   :src="scope.row.gender === 0 ? require('@/assets/icon_sex_man.png') : require('@/assets/icon_sex_woman.png')"
                 />
-                <span>{{ scope.row.gender === 0 ? '男' : '女' }}</span>
+                <span>{{ scope.row.gender === 0 ? 'Male' : 'Female' }}</span>
               </div>
               <div
                 v-else-if="item.prop === 'vip'"
@@ -115,19 +115,19 @@
           </el-table-column>
           <el-table-column
             align="center"
-            label="操作"
+            label="Actions"
           >
-            <template slot-scope="scope">
+            <template v-slot:default="scope">
               <el-button
                 v-if="isInited('updateItemModel')"
                 type="text"
                 @click="onUpdateItem(scope.row)"
-              >编辑</el-button>
+              >Edit</el-button>
               <el-button
                 v-if="isInited('deleteItemsModel')"
                 type="text"
                 @click="onDeleteItem(scope.row)"
-              >删除</el-button>
+              >Delete</el-button>
             </template>
           </el-table-column>
         </el-table>
@@ -151,7 +151,7 @@
           :form-items="formItems"
         >
           <template #extra>
-            <el-form-item label="上传头像">
+            <el-form-item label="Upload Avatar">
               <SingleUpload
                 action="http://test.youcanedu.net:8881/yx/uploadSpellingTextBookCoverImage"
                 :headers="{'Authorization': `Bearer eyJhbGciOiJIUzUxMiJ9.eyJBdXRob3JpemF0aW9uIjoiUk9MRV9hZG1pbiwiLCJ1c2VyRW50aXR5SWQiOjE4LCJ1c2VyRW50aXR5TmFtZSI6IueuoeeQhuWRmCIsInVzZXJFbnRpdHlQaG9uZSI6IjE4ODAwMDAwMDA4Iiwic3ViIjoi566h55CG5ZGYIiwiZXhwIjoxNjE2MTQ2MjQwfQ.TZS59WlhzJwkbk60OhE7xJMJ2XlIY3gBo_Cnh8yqCooKfyquS_IbSH-d6___nVNAhrMzNq3qDMM2sTZpiQ2IDA`}"
@@ -169,7 +169,6 @@
     </Dialog>
   </div>
 </template>
-
 <script>
 import TableMixin, { PageModelMixin } from '@/mixins/TableMixin'
 import {

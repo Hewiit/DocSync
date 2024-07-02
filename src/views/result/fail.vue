@@ -7,29 +7,29 @@
     >
       <div class="text-center"><i class="el-icon-error icon"></i></div>
       <div class="result">
-        提交失败
+        Submission Failed
       </div>
       <div class="tip">
-        请核对并修改以下信息后，再重新提交。
+        Please verify and correct the following information before resubmitting.
       </div>
       <el-card
         :body-style="{padding: 0}"
         class="text-center reason"
       >
-        <div class="text-bold text-lg margin-bottom">您提交的内容有如下错误：</div>
-        <div class="reason-item"><i class="el-icon-circle-close text-red margin-right-xs"></i>您的账户已被冻结
+        <div class="text-bold text-lg margin-bottom">There are the following errors in your submission:</div>
+        <div class="reason-item"><i class="el-icon-circle-close text-red margin-right-xs"></i>Your account has been frozen
           <el-link
             :underline="false"
             type="primary"
             class="margin-left"
-          >立即解冻<i class="el-icon-arrow-right"></i></el-link>
+          >Unfreeze Now<i class="el-icon-arrow-right"></i></el-link>
         </div>
-        <div class="reason-item"><i class="el-icon-circle-close text-red margin-right-xs"></i>您的账户还不具备申请资格
+        <div class="reason-item"><i class="el-icon-circle-close text-red margin-right-xs"></i>Your account does not meet the application requirements
           <el-link
             :underline="false"
             type="primary"
             class="margin-left"
-          >立即升级<i class="el-icon-arrow-right"></i></el-link>
+          >Upgrade Now<i class="el-icon-arrow-right"></i></el-link>
         </div>
       </el-card>
     </el-card>
@@ -79,4 +79,3 @@ export default {
   }
 }
 </style>
-

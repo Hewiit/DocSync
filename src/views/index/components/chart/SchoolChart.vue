@@ -6,7 +6,7 @@
   >
     <template #header>
       <div class="text-bold">
-        全国合作校区分布图
+        Map of cooperative campuses across the country
       </div>
     </template>
     <div
@@ -79,7 +79,7 @@ export default {
           },
           {
             type: 'effectScatter',
-            name: '前三名合作校区',
+            name: 'Top 3 Partner Campuses',
             showEffectOn: 'emphasis',
             coordinateSystem: 'geo',
             data: scatterData

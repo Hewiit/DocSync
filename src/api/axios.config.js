@@ -1,7 +1,7 @@
 import Axios from 'axios'
 import qs from 'qs'
 
-const baseIp = 'http://124.220.205.84:8000/'
+const baseIp = 'http://49.235.148.137:8000/'
 
 export const CONTENT_TYPE = 'Content-Type'
 
@@ -48,7 +48,7 @@ service.interceptors.response.use(
     if (process.env.NODE_ENV === 'development') {
       console.log(error)
     }
-    return Promise.reject({ code: 500, msg: '服务器异常，请稍后重试…' })
+    return Promise.reject({ code: 500, msg: 'Server exception, please try again later...' })
   }
 )
 

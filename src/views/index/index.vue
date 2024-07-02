@@ -16,11 +16,11 @@
           >
             <div class="margin-top">
               <div class="text-gray">
-                较昨日新增：{{ extra.data }}
+                Increase from yesterday: {{ extra.data }}
                 <i class="el-icon-caret-top text-green"></i>
               </div>
               <div class="text-gray margin-top-sm">
-                较上周新增：{{ extra.data1 }}
+                Increase from last week: {{ extra.data1 }}
                 <i class="el-icon-caret-top text-blue"></i>
               </div>
             </div>
@@ -34,11 +34,11 @@
               style="position: relative"
             >
               <div class="text-gray">
-                较昨日新增：{{ extra.data }}
+                Increase from yesterday: {{ extra.data }}
                 <i class="el-icon-caret-top text-green"></i>
               </div>
               <div class="text-gray margin-top-sm">
-                较上周新增：{{ extra.data1 }}
+                Increase from last week: {{ extra.data1 }}
                 <i class="el-icon-caret-top text-blue"></i>
               </div>
               <div class="stack-avatar-wrapper">
@@ -147,39 +147,39 @@ export default {
     return {
       dataList: [
         {
-          title: '今日访问量',
+          title: 'Today\'s Visits',
           data: '+1000',
-          bottomTitle: '总访问量',
-          totalSum: '100万+',
+          bottomTitle: 'Total Visits',
+          totalSum: '1 million+',
           extra: {
             data: 1000,
             data1: 2350
           }
         },
         {
-          title: '新增用户',
+          title: 'New Users',
           data: '+500',
-          bottomTitle: '总用户量',
-          totalSum: '200万+',
+          bottomTitle: 'Total User Count',
+          totalSum: '2 million+',
           extra: {
             data: 700,
             data1: 968
           }
         },
         {
-          title: '当月销售额',
+          title: 'Monthly Sales',
           data: '￥50000',
-          bottomTitle: '累计销售额',
-          totalSum: '2000万+',
+          bottomTitle: 'Cumulative Sales',
+          totalSum: '20 million+',
           extra: {
             data: 80
           }
         },
         {
-          title: '当月订单量',
-          data: '189笔',
-          bottomTitle: '累计订单量',
-          totalSum: '1万+',
+          title: 'Monthly Orders',
+          data: '189',
+          bottomTitle: 'Cumulative Orders',
+          totalSum: '10,000+',
           extra: {
             data: 80
           }

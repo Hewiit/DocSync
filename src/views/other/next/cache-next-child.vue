@@ -1,11 +1,11 @@
 <template>
   <el-card>
     <template #header>
-      <div>缓存信息</div>
+      <div>CacheInfo</div>
     </template>
     <el-input
       v-model="content"
-      placeholder="请输入信息"
+      placeholder="Please input"
     />
   </el-card>
 </template>

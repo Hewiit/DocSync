@@ -72,7 +72,6 @@ const mutations = {
     })
   },
   LOGOUT(state) {
-    // 这里只是在本地模拟删除了用户信息，在真实场景下需要 调后台登出接口 来真正实现登出功能
     state.userId = ''
     state.userName = ''
     state.avatar = ''

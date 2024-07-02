@@ -1,4 +1,4 @@
-export const baseAddress = 'http://124.220.205.84:8000'
+export const baseAddress = 'http://49.235.148.137:8000'
 
 export const test = '/test'
 

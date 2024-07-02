@@ -6,7 +6,7 @@
           size="small"
           type="primary"
           @click="resetElements"
-        >重置元素位置</el-button>
+        >Reset the element position</el-button>
       </template>
       <draggable
         v-model="list"

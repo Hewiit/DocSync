@@ -2,9 +2,6 @@
   <div class="vaw-avatar-container">
     <el-dropdown trigger="hover" @command="onCommad">
       <div class="action-wrapper">
-        <div class="avatar">
-          <img :src="avatar" />
-        </div>
         <span class="nick-name el-dropdown-link">
           <span>{{ username }}</span>
           <i class="el-icon-arrow-down tip"></i>
@@ -12,10 +9,10 @@
       </div>
       <el-dropdown-menu slot="dropdown">
         <el-dropdown-item icon="el-icon-user" command="personalCenter">
-          个人中心
+          Personal Center
         </el-dropdown-item>
         <el-dropdown-item icon="el-icon-switch-button" command="logout">
-          退出登录
+          Logout
         </el-dropdown-item>
       </el-dropdown-menu>
     </el-dropdown>
@@ -56,7 +53,7 @@ export default {
       store.toPersonalCenter && store.toPersonalCenter()
     },
     onLogout() {
-      MessageBox.confirm('是否要退出登录？', '提示')
+      MessageBox.confirm('Whether you want to log out？', 'tips')
         .then(_ => {
           store.logout()
           store.onLogout && store.onLogout()

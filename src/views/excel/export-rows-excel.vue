@@ -6,7 +6,7 @@
           type="primary"
           size="mini"
           @click="exportExcel"
-        >导出选中的Excel
+        >Export Selected Excel
         </el-button>
       </template>
     </TableHeader>
@@ -23,7 +23,7 @@
           />
           <el-table-column
             align="center"
-            label="序号"
+            label="Index"
             width="80"
           >
             <template slot-scope="scope">
@@ -32,32 +32,32 @@
           </el-table-column>
           <el-table-column
             align="center"
-            label="名称"
+            label="Name"
             prop="nickName"
           />
           <el-table-column
             align="center"
-            label="性别"
+            label="Gender"
             prop="gender"
           >
             <template slot-scope="scope">
-              <span>{{ scope.row.gender === 0 ? '男' : '女' }}</span>
+              <span>{{ scope.row.gender === 0 ? 'Male' : 'Female' }}</span>
             </template>
           </el-table-column>
           <el-table-column
             align="center"
-            label="地址"
+            label="Address"
             prop="address"
           />
           <el-table-column
             align="center"
-            label="上次登录时间"
+            label="Last Login Time"
             prop="lastLoginTime"
             width="160px"
           />
           <el-table-column
             align="center"
-            label="上次登录IP"
+            label="Last Login IP"
             prop="lastLoginIp"
             width="130px"
           />
@@ -91,23 +91,23 @@ export default {
   methods: {
     exportExcel() {
       if (this.selectedItems.length === 0) {
-        this.$errorMsg('请先选择要导出的条目')
+        this.$errorMsg('Please select entries to export first')
         return
       }
       const data = this.selectedItems.map((it) => {
         return [
           it.nickName,
-          it.gender === 0 ? '男' : '女',
+          it.gender === 0 ? 'Male' : 'Female',
           it.address,
           it.lastLoginTime,
           it.lastLoginIp
         ]
       })
-      data.unshift(['昵称', '性别', '地址', '上次登录时间', '上次登录IP'])
+      data.unshift(['Nickname', 'Gender', 'Address', 'Last Login Time', 'Last Login IP'])
       const workSheet = XLSX.utils.aoa_to_sheet(data)
       const workBook = XLSX.utils.book_new()
-      XLSX.utils.book_append_sheet(workBook, workSheet, '数据报表')
-      XLSX.writeFile(workBook, 'tale-list.xlsx')
+      XLSX.utils.book_append_sheet(workBook, workSheet, 'Data Report')
+      XLSX.writeFile(workBook, 'table-list.xlsx')
     }
   }
 }

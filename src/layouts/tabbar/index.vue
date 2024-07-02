@@ -16,7 +16,7 @@
       @contextmenu.native.prevent="onContextMenu(currentTab, $event)"
     >
       <el-tab-pane
-        v-for="item of state.visitedView"
+        v-for="item in state.visitedView"
         :key="item.path"
         :label="item.meta.title"
         :name="item.fullPath"
@@ -25,7 +25,7 @@
     </el-tabs>
     <ul
       v-show="showContextMenu"
-      class="contex-menu-wrapper"
+      class="context-menu-wrapper"
       :style="contextMenuStyle"
     >
       <li>
@@ -33,7 +33,7 @@
           icon="el-icon-refresh"
           :underline="false"
           @click="refreshRoute"
-        >刷新页面</el-link>
+        >Refresh Page</el-link>
       </li>
       <li :disabled="showLeftMenu">
         <el-link
@@ -41,7 +41,7 @@
           icon="el-icon-back"
           :underline="false"
           @click="closeLeft"
-        >关闭左侧</el-link>
+        >Close Left</el-link>
       </li>
       <li :disabled="showRightMenu">
         <el-link
@@ -49,14 +49,14 @@
           icon="el-icon-right"
           :underline="false"
           @click="closeRight"
-        >关闭右侧</el-link>
+        >Close Right</el-link>
       </li>
       <li>
         <el-link
           icon="el-icon-close"
           :underline="false"
           @click="closeAll"
-        >关闭所有</el-link>
+        >Close All</el-link>
       </li>
     </ul>
   </div>

@@ -358,14 +358,14 @@ export const RefreshActionMixin = {
   methods: {
     doRefresh() {
       if (this.isInited('likeSearchModel')) {
-        if (this.hasSearchParams()) { // 搜索有值，优先执行模糊搜索的方法
+        if (this.hasSearchParams()) {
           this.doSearch()
-        } else { // 执行普通的列表查询
+        } else {
           this.getData()
         }
-      } else if (this.isInited('getDataModel')) { // 执行普通的列表查询
+      } else if (this.isInited('getDataModel')) {
         this.getData()
-      } else { // 如果都没有设置就报错
+      } else {
         throw new Error('can`t exec doRefresh function')
       }
     }

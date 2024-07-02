@@ -4,7 +4,7 @@
       :can-collapsed="likeSearchModel.conditionItems && likeSearchModel.conditionItems.length !== 0"
       :search-model="likeSearchModel.conditionItems"
       :default-collapsed-state="true"
-      title="查询条件"
+      title="Search Criteria"
       @doSearch="doSearch"
       @resetSearch="resetSearch"
     />
@@ -21,7 +21,7 @@
         >
           <el-table-column
             align="center"
-            label="序号"
+            label="No."
             width="80"
           >
             <template slot-scope="scope">
@@ -30,12 +30,12 @@
           </el-table-column>
           <el-table-column
             align="center"
-            label="名称"
+            label="Name"
             prop="nickName"
           />
           <el-table-column
             align="center"
-            label="头像"
+            label="Avatar"
           >
             <template slot-scope="scope">
               <div class="avatar-container">
@@ -54,7 +54,7 @@
           </el-table-column>
           <el-table-column
             align="center"
-            label="性别"
+            label="Gender"
             prop="gender"
           >
             <template slot-scope="scope">
@@ -63,13 +63,13 @@
                   class="gender-icon"
                   :src="scope.row.gender === 0 ? require('@/assets/icon_sex_man.png') : require('@/assets/icon_sex_woman.png')"
                 />
-                <span>{{ scope.row.gender === 0 ? '男' : '女' }}</span>
+                <span>{{ scope.row.gender === 0 ? 'Male' : 'Female' }}</span>
               </div>
             </template>
           </el-table-column>
           <el-table-column
             align="center"
-            label="状态"
+            label="Status"
           >
             <template slot-scope="scope">
               <el-switch
@@ -81,18 +81,18 @@
           </el-table-column>
           <el-table-column
             align="center"
-            label="地址"
+            label="Address"
             prop="address"
           />
           <el-table-column
             align="center"
-            label="上次登录时间"
+            label="Last Login Time"
             prop="lastLoginTime"
             width="160px"
           />
           <el-table-column
             align="center"
-            label="上次登录IP"
+            label="Last Login IP"
             prop="lastLoginIp"
             width="130px"
           />
@@ -137,25 +137,25 @@ export default {
       conditionItems: [
         {
           name: 'name',
-          label: '用户姓名',
+          label: 'User Name',
           value: '',
           type: 'input',
-          placeholder: '请输入用户姓名',
+          placeholder: 'Please enter user name',
           span: 8
         },
         {
           name: 'sex',
-          label: '用户姓别',
+          label: 'User Gender',
           value: '',
           type: 'select',
-          placeholder: '请选择用户姓别',
+          placeholder: 'Please select user gender',
           selectOptions: [
             {
-              label: '男',
+              label: 'Male',
               value: 0
             },
             {
-              label: '女',
+              label: 'Female',
               value: 1
             }
           ],
@@ -183,12 +183,12 @@ export default {
     })
   },
   methods: {
-    // 重写 doSearch方法，自定义实现过程
+    // Override doSearch method, customize the implementation
     doSearch() {
       const { name, sex } = this.generatorSearchParams()
       this.filterList = this.dataList.filter(it => {
         if (name && sex) {
-          return it.nickName.indexOf(name) !== -1 && parseInt(it.gener) === parseInt(sex)
+          return it.nickName.indexOf(name) !== -1 && parseInt(it.gender) === parseInt(sex)
         }
         if (name) {
           return it.nickName.indexOf(name) !== -1
@@ -199,7 +199,7 @@ export default {
         return true
       })
     },
-    // 重写 resetSearch方法，自定义实现过程
+    // Override resetSearch method, customize the implementation
     resetSearch() {
       this.likeSearchModel.conditionItems && this.likeSearchModel.conditionItems.forEach(it => { it.value = '' })
       this.filterList = null

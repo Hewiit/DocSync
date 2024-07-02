@@ -2,12 +2,12 @@
   <div class="main-container">
     <el-card :body-style="{padding: '0'}">
       <template #header>
-        <el-link :underline="false">文章标题</el-link>
+        <el-link :underline="false">Article Title</el-link>
       </template>
       <el-input
         v-model="title"
         class="title-input"
-        placeholder="请输入文章标题"
+        placeholder="Please enter the article title"
       />
     </el-card>
     <el-card
@@ -16,40 +16,40 @@
     >
       <template #header>
         <div class="flex">
-          <el-link :underline="false">文章内容</el-link>
+          <el-link :underline="false">Article Content</el-link>
           <div class="flex-sub"></div>
           <el-button
             style="margin-inline:10px"
             type="danger"
             size="mini"
             @click="back()"
-          >退出编辑
+          >Exit Editing
           </el-button>
           <el-popover
             v-model="comment_visible"
             placement="top"
             width="600"
           >
-            <p>添加评论</p>
+            <p>Add Comment</p>
             <el-input
               v-model="form_addComment.comment_content"
-              placeholder="输入评论"
-              style="width: 80%;margin: auto"
+              placeholder="Enter comment"
+              style="width: 80%; margin: auto"
             />
             <div style="text-align: left; margin: 0">
-              <el-button size="mini" style="margin-top:10px" @click="addComment(), form_addComment.comment_content= null, comment_visible = false">确定</el-button>
+              <el-button size="mini" style="margin-top:10px" @click="addComment(), form_addComment.comment_content= null, comment_visible = false">Confirm</el-button>
             </div>
             <el-table :data="commentList" height="400">
-              <el-table-column width="120" property="username" label="名称" />
-              <el-table-column width="120" property="time" label="时间" />
-              <el-table-column width="300" property="content" label="评论" />
+              <el-table-column width="120" property="username" label="Name" />
+              <el-table-column width="120" property="time" label="Time" />
+              <el-table-column width="300" property="content" label="Comment" />
             </el-table>
             <el-button
               slot="reference"
               style="margin-inline:10px"
               size="mini"
               icon="el-icon-plus"
-            >评论
+            >Comment
             </el-button>
           </el-popover>
           <el-popover
@@ -57,21 +57,21 @@
             placement="top"
             width="400"
           >
-            <p>通过ID添加协作者</p>
+            <p>Add Collaborators by ID</p>
             <el-input
               v-model="form_invite.accept_id"
-              placeholder="输入用户ID"
+              placeholder="Enter user ID"
               style="width: 80%;margin: auto"
             />
             <div style="text-align: left; margin: 0">
-              <el-button size="mini" style="margin-top:10px" @click="addCooperator(), form_invite.accept_id=null, invite_visible = false">确定</el-button>
+              <el-button size="mini" style="margin-top:10px" @click="addCooperator(), form_invite.accept_id=null, invite_visible = false">Confirm</el-button>
             </div>
             <el-table v-loading="loading" :data="cooperatorList" height="400">
               <el-table-column width="60" property="id" label="ID" />
-              <el-table-column width="140" property="username" label="名称" />
+              <el-table-column width="140" property="username" label="Name" />
               <el-table-column
                 align="center"
-                label="操作"
+                label="Action"
                 width="200"
               >
                 <template slot-scope="scope">
@@ -82,7 +82,7 @@
                     text-align="left"
                     icon="el-icon-delete"
                     @click="deleteCooperator(scope.row)"
-                  >解除协作</el-button>
+                  >End Collaboration</el-button>
                 </template>
               </el-table-column>
             </el-table>
@@ -92,26 +92,26 @@
               style="margin-inline:10px"
               size="mini"
               icon="el-icon-plus"
-            >协作
+            >Collaborate
             </el-button>
           </el-popover>
           <el-button
             size="mini"
             @click="Save"
-          >保存</el-button>
+          >Save</el-button>
           <el-button
             size="mini"
             :underline="false"
             @click="Like"
-          >收藏</el-button>
+          >Favorite</el-button>
           <el-button
             type="warning"
             size="mini"
             @click="share"
-          >分享</el-button>
+          >Share</el-button>
         </div>
       </template>
-      <!-- <el-dialog title="分享二维码" :visible.sync="dialogVisible_share">
+      <!-- <el-dialog title="Share QR Code" :visible.sync="dialogVisible_share">
         <div>
           <image
             :src="imgUrl"
@@ -126,13 +126,13 @@
     </el-card>
     <div
       v-if="htmlContent"
-      class="margin-top padding priview-content"
+      class="margin-top padding preview-content"
       v-html="htmlContent"
     >
     </div>
     <div
       v-if="jsonContent"
-      class="margin-top padding priview-content"
+      class="margin-top padding preview-content"
     >
       {{ jsonContent }}
     </div>
@@ -264,10 +264,10 @@ export default {
       this.$axios.post('/worddocx/share', qs.stringify(this.form4))
         .then(res => {
           if (res.data.result === 0) {
-            alert('您的分享链接是' + 'http://124.220.205.84/#/share' + res.data.x)
-            localStorage.setItem('refresh', '1')
+            alert('Your share link is ' + 'http://49.235.148.137/#/share' + res.data.x);
+            localStorage.setItem('refresh', '1');
           } else {
-            this.$message.error(res.data.message)
+            this.$message.error(res.data.message);
           }
         })
     },

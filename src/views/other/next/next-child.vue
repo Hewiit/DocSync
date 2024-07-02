@@ -1,6 +1,6 @@
 <template>
   <el-card>
-    下一级页面
+    nextChild
   </el-card>
 </template>
 

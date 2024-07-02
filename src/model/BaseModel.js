@@ -1,5 +1,5 @@
 /**
- * 检测参数的合法性，如果校验成功则方法返回true
+ * Validates the parameters. If validation succeeds, the method returns true.
  * @param {*} param0
  * @returns true
  */
@@ -14,58 +14,58 @@ function checkParams({ url = '', method = 'GET' }) {
 }
 
 /**
- * 普通的加载数据方法，如加载列表、初始化数据
+ * General method for loading data, such as loading lists or initializing data.
  * @param {*} param0
  */
 export function loadData({ url = '', method = 'GET', data, beforeRequest, afterRequest }) {
   if (checkParams({ url, method })) {
-    return this[`$${method.toLowerCase()}`]({ url, data, beforeRequest, afterRequest })
+    return this[`${method.toLowerCase()}`]({ url, data, beforeRequest, afterRequest })
   }
   throw new Error('params check failed')
 }
 
 /**
- * 模糊搜索方法
+ * Method for fuzzy searching.
  * @param {*} param0
  */
 export function likeSearch({ url = '', method = 'GET', data, beforeRequest, afterRequest }) {
   if (checkParams({ url, method })) {
-    return this[`$${method.toLowerCase()}`]({ url, data, beforeRequest, afterRequest })
+    return this[`${method.toLowerCase()}`]({ url, data, beforeRequest, afterRequest })
   }
   throw new Error('params check failed')
 }
 
 /**
- * 添加一条数据
+ * Adds a new data entry.
  * @param {*} param0
  */
 export function addItem({ url = '', method = 'GET', data, beforeRequest, afterRequest }) {
   if (checkParams({ url, method })) {
-    return this[`$${method.toLowerCase()}`]({ url, data, beforeRequest, afterRequest })
+    return this[`${method.toLowerCase()}`]({ url, data, beforeRequest, afterRequest })
   }
   throw new Error('params check failed')
 }
 
 /**
- * 删除n条数据
+ * Deletes n data entries.
  * @param {*} items
  * @param {*} param1
  */
 export function deleteItems({ url = '', method = 'GET', data, beforeRequest, afterRequest }) {
   if (checkParams({ url, method })) {
-    return this[`$${method.toLowerCase()}`]({ url, data, beforeRequest, afterRequest })
+    return this[`${method.toLowerCase()}`]({ url, data, beforeRequest, afterRequest })
   }
   throw new Error('params check failed')
 }
 
 /**
- * 更新一条数据
+ * Updates a data entry.
  * @param {*} item
  * @param {*} param1
  */
 export function updateItem({ url = '', method = 'GET', data, beforeRequest, afterRequest }) {
   if (checkParams({ url, method })) {
-    return this[`$${method.toLowerCase()}`]({ url, data, beforeRequest, afterRequest })
+    return this[`${method.toLowerCase()}`]({ url, data, beforeRequest, afterRequest })
   }
   throw new Error('params check failed')
 }

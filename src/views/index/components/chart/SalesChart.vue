@@ -6,7 +6,7 @@
   >
     <template #header>
       <div class="text-bold">
-        一周销售额走势图（单位：万）
+        Weekly sales trend chart (unit: 10,000)
       </div>
     </template>
     <div
@@ -47,7 +47,7 @@ export default {
         },
         xAxis: {
           type: 'category',
-          data: ['周一', '周二', '周三', '周四', '周五', '周六', '周天'],
+          data: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
           boundaryGap: false,
           splitLine: { show: false }
         },

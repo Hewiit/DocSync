@@ -1,23 +1,23 @@
 <template>
   <div class="main-container">
     <el-card
-      :body-style="{padding: '10px'}"
+      :body-style="{ padding: '10px' }"
       style="height: 100%"
     >
       <template #header>
         <el-page-header
-          content="上一个页面传递过来的参数"
+          content="Parameters passed from the previous page"
           @back="goBack"
         />
       </template>
       <div class="padding text-lg">
-        通过 query 传递过来的参数:
+        Parameters passed via query:
       </div>
       <div class="padding text-lg">
         {{ queryInfo }}
       </div>
       <div class="padding text-lg">
-        通过params传递过来的参数:
+        Parameters passed via params:
       </div>
       <div class="padding text-lg">
         {{ paramInfo }}

@@ -11,7 +11,7 @@
           :title="item.title"
         ></slot>
       </div>
-      <div class="text-gray text-xs">一小时前</div>
+      <div class="text-gray text-xs">An hour ago</div>
     </div>
   </div>
 </template>

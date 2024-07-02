@@ -2,7 +2,7 @@
   <div class="main-container">
     <el-tabs v-model="activeName">
       <el-tab-pane
-        label="模板选择"
+        label="Template Selection"
         name="first"
         lazy
         class="wrapper"

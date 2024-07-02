@@ -59,7 +59,7 @@ export default {
     display: block;
     width: 100%;
     height: 100%;
-    background-color: black;
+    background-color: cornflowerblue;
     position: absolute;
     top: 0;
     left: 0;

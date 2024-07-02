@@ -4,21 +4,21 @@
       <img :src="require('@/assets/img_login_bg_04.jpg')" />
     </div>
     <p></p>
-    <span>技术栈</span>
+    <span>Technology Stack</span>
     <p></p>
-    <span>前端: vue框架</span>
+    <span>Frontend: Vue.js framework</span>
     <p></p>
-    <span>后端: django-web框架</span>
+    <span>Backend: Django web framework</span>
     <p></p>
-    <span>数据库: mysql </span>
+    <span>Database: MySQL</span>
     <p></p>
-    <span>团队: buaa软院五名大二本科生吖</span>
   </div>
 </template>
 
 <script>
 import ClipboardJS from 'clipboard'
 import Setting from '@/utils/setting'
+
 export default {
   name: 'Contact',
   data() {
@@ -31,10 +31,10 @@ export default {
     copy() {
       const clipboard = new ClipboardJS('.copy')
       clipboard.on('success', (e) => {
-        this.$successMsg('复制成功~')
+        this.$successMsg('Copy successful~')
       })
       clipboard.on('error', (e) => {
-        this.$errorMsg('复制失败')
+        this.$errorMsg('Copy failed')
       })
     }
   }

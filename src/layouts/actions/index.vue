@@ -109,7 +109,7 @@ export default {
     },
     onScreenFull() {
       if (!screenfull.isEnabled) {
-        this.$errorMsg('当前浏览器不支持全屏操作')
+        this.$errorMsg('The current browser does not support full-screen operation')
         return false
       }
       screenfull.toggle()

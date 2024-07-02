@@ -2,12 +2,12 @@
   <div class="base-form-container">
     <el-form
       ref="form"
-      :label-position="config.labelPosition || 'right' "
+      :label-position="config.labelPosition || 'right'"
       :label-width="(config.labelWidth || 80) + 'px'"
       :size="config.size || 'small'"
     >
       <el-form-item
-        v-for="(item, i) of innerFormItems"
+        v-for="(item, i) in innerFormItems"
         :key="i"
         :label="item.label"
       >
@@ -15,7 +15,7 @@
           <el-input
             v-if="item.type === 'input' && !item.hidden"
             v-model="item.value"
-            :placeholder="item.placeholder || '请输入内容'"
+            :placeholder="item.placeholder || 'Please enter content'"
             :size="config.size || 'small'"
             clearable
             :type="item.inputType || ''"
@@ -26,7 +26,7 @@
           <el-select
             v-else-if="item.type === 'select' && !item.hidden"
             v-model="item.value"
-            :placeholder="item.placeholder || '请选择条目'"
+            :placeholder="item.placeholder || 'Please select an item'"
             :size="config.size || 'small'"
             :filterable="item.filterable ? true : false"
             clearable
@@ -46,8 +46,8 @@
             v-model="item.value"
             type="daterange"
             range-separator="-"
-            start-placeholder="开始日期"
-            end-placeholder="结束日期"
+            start-placeholder="Start Date"
+            end-placeholder="End Date"
             class="form-item"
             style="width: 100%"
             :size="config.size || 'small'"
@@ -56,8 +56,7 @@
             v-else-if="item.type === 'date' && !item.hidden"
             v-model="item.value"
             type="date"
-            range-separator="-"
-            :placeholder="item.placeholder || '请选择日期'"
+            :placeholder="item.placeholder || 'Please select a date'"
             class="form-item"
             :size="config.size || 'small'"
           />
@@ -65,7 +64,7 @@
             v-else-if="item.type === 'datetime' && !item.hidden"
             v-model="item.value"
             type="datetime"
-            :placeholder="item.placeholder || '请选择日期'"
+            :placeholder="item.placeholder || 'Please select a date and time'"
             class="form-item"
             :size="config.size || 'small'"
           />
@@ -76,7 +75,7 @@
             :picker-options="{
               selectableRange: '00:00:00 - 23:59:59'
             }"
-            :placeholder="item.placeholder || '请选择时间'"
+            :placeholder="item.placeholder || 'Please select a time'"
             class="form-item"
             :size="config.size || 'small'"
           />
@@ -88,7 +87,7 @@
           >
             <component
               :is="item.style === 'button' ? 'el-radio-button' : 'el-radio'"
-              v-for="optionItem of item.radioOptions"
+              v-for="optionItem in item.radioOptions"
               :key="optionItem.value"
               :label="optionItem.value"
             >{{ optionItem.label }}</component>
@@ -101,7 +100,7 @@
           >
             <component
               :is="item.style === 'button' ? 'el-checkbox-button' : 'el-checkbox'"
-              v-for="optionItem of item.checkOptions"
+              v-for="optionItem in item.checkOptions"
               :key="optionItem.value"
               :label="optionItem.value"
             >{{ optionItem.label }}</component>
@@ -114,7 +113,7 @@
 </template>
 
 <script>
-import FormMixin from '@/mixins/FormMixin'
+import FormMixin from '@/mixins/FormMixin';
 export default {
   name: 'BaseForm',
   mixins: [FormMixin],
@@ -139,13 +138,13 @@ export default {
   watch: {
     formItems: {
       handler() {
-        this.refreshItems()
+        this.refreshItems();
       },
       deep: true
     }
   },
   mounted() {
-    this.refreshItems()
+    this.refreshItems();
   }
 }
 </script>

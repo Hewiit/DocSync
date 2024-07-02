@@ -12,21 +12,21 @@
       <el-button
         size="small"
         @click="addText"
-      >增加文本</el-button>
+      >Add Text</el-button>
       <el-button
         size="small"
         @click="addImage"
-      >增加图片</el-button>
+      >Add Image</el-button>
       <el-button
         size="small"
         type="primary"
         @click="getHTML"
-      >预览HTML</el-button>
+      >Preview HTML</el-button>
     </div>
     <div
-      v-if="priviewContent"
-      class="priview-content padding-xs margin-top"
-      v-html="priviewContent"
+      v-if="previewContent"
+      class="preview-content padding-xs margin-top"
+      v-html="previewContent"
     ></div>
   </div>
 </template>
@@ -43,12 +43,12 @@ export default {
   data() {
     return {
       editorText: '',
-      priviewContent: ''
+      previewContent: ''
     }
   },
   methods: {
     addText() {
-      this.$refs.markdownEditor.addText('\n### 新增内容')
+      this.$refs.markdownEditor.addText('\n### New Content')
     },
     addImage() {
       this.$refs.markdownEditor.addImage(
@@ -56,7 +56,7 @@ export default {
       )
     },
     getHTML() {
-      this.priviewContent = SimpleMDE.prototype.markdown(this.editorText)
+      this.previewContent = SimpleMDE.prototype.markdown(this.editorText)
     }
   }
 }
@@ -66,11 +66,11 @@ export default {
 .editor-container {
   position: relative;
 }
-.theme-dark .priview-content {
+.theme-dark .preview-content {
   background: #5a5a5a;
   color: #fff;
 }
-.priview-content {
+.preview-content {
   background: #fff;
   color: #333;
 }

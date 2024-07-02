@@ -14,7 +14,7 @@
         <el-tooltip
           class="item"
           effect="dark"
-          content="点击展开/收起"
+          content="click to open/close"
           placement="top"
         >
           <el-link
@@ -58,7 +58,7 @@
                 <span>{{ item.label }}</span>
                 <el-input
                   v-model="item.value"
-                  :placeholder="item.placeholder || '请输入内容'"
+                  :placeholder="item.placeholder || 'Please input'"
                   size="small"
                   clearable
                   class="form-item"
@@ -71,7 +71,7 @@
                 <span>{{ item.label }}</span>
                 <el-select
                   v-model="item.value"
-                  :placeholder="item.placeholder || '请选择条目'"
+                  :placeholder="item.placeholder || 'Please Choose items'"
                   size="small"
                   :filterable="item.filterable ? true : false"
                   clearable
@@ -95,8 +95,8 @@
                   v-model="item.value"
                   type="daterange"
                   range-separator="-"
-                  start-placeholder="开始日期"
-                  end-placeholder="结束日期"
+                  start-placeholder="Begin Date"
+                  end-placeholder="End Date"
                   class="form-item"
                   size="small"
                 />
@@ -110,7 +110,7 @@
                   v-model="item.value"
                   type="date"
                   range-separator="-"
-                  :placeholder="item.placeholder || '请选择日期'"
+                  :placeholder="item.placeholder || 'Please Choose Date'"
                   class="form-item"
                   size="small"
                 />
@@ -123,7 +123,7 @@
                 <el-date-picker
                   v-model="item.value"
                   type="datetime"
-                  :placeholder="item.placeholder || '请选择日期'"
+                  :placeholder="item.placeholder || 'Please Choose Date'"
                   class="form-item"
                   size="small"
                 />
@@ -139,7 +139,7 @@
                   :picker-options="{
                     selectableRange: '00:00:00 - 23:59:59'
                   }"
-                  :placeholder="item.placeholder || '请选择时间'"
+                  :placeholder="item.placeholder || 'Please Choose Time'"
                   class="form-item"
                   size="small"
                 />
@@ -153,12 +153,12 @@
                   size="mini"
                   icon="el-icon-refresh"
                   @click="resetSearch"
-                >重置</el-button>
+                >Reset</el-button>
                 <el-button
                   size="mini"
                   icon="el-icon-search"
                   @click="doSearch"
-                >搜索</el-button>
+                >Search</el-button>
               </div>
             </el-col>
           </el-row>

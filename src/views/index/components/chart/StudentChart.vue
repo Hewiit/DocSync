@@ -6,7 +6,7 @@
   >
     <template #header>
       <div class="text-bold">
-        半年招生对比图（单位：人）
+        Six-Month Enrollment Comparison Chart (Unit: People)
       </div>
     </template>
     <div
@@ -15,7 +15,6 @@
     >
     </div>
   </el-card>
-
 </template>
 
 <script>
@@ -44,7 +43,7 @@ export default {
         },
         yAxis: {
           type: 'category',
-          data: ['一月', '二月', '三月', '四月', '五月', '六月'],
+          data: ['January', 'February', 'March', 'April', 'May', 'June'],
           boundaryGap: 0,
           axisTick: {
             show: false

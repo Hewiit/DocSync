@@ -6,7 +6,7 @@
   >
     <template #header>
       <div class="text-bold">
-        招生渠道分析图
+        Enrollment channel analysis chart
       </div>
     </template>
     <div
@@ -44,7 +44,7 @@ export default {
         },
         series: [
           {
-            name: '访问来源',
+            name: 'Access source',
             type: 'pie',
             radius: ['40%', '70%'],
             avoidLabelOverlap: false,
@@ -67,11 +67,11 @@ export default {
               smooth: true
             },
             data: [
-              { value: 1969, name: '线上' },
-              { value: 743, name: '互推' },
-              { value: 1594, name: '电话' },
-              { value: 1347, name: '地推' },
-              { value: 635, name: '直播' }
+              { value: 1969, name: 'online' },
+              { value: 743, name: 'mutual push' },
+              { value: 1594, name: 'Phone' },
+              { value: 1347, name: 'ditui' },
+              { value: 635, name: 'live' }
             ]
           }
         ]

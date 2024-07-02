@@ -1,5 +1,5 @@
 export const baseModel = {
-  actionModel: 'add' // 用于表格操作对话框的模式 eidt: 编辑模式  add: 添加模式，默认是添加模式
+  actionModel: 'add'
 }
 
 export function mergeObject(model) {
@@ -32,9 +32,9 @@ export function randomString(length) {
 export function currentDate() {
   const d = new Date()
   let str = ''
-  str += d.getFullYear() + '-' // 获取当前年份
+  str += d.getFullYear() + '-'
   const month = d.getMonth() + 1
-  str += month < 10 ? '0' + month + '-' : month + '-' // 获取当前月份（0——11）
+  str += month < 10 ? '0' + month + '-' : month + '-'
   str += d.getDate() + ' '
   const hours = d.getHours()
   str += hours < 10 ? '0' + hours : hours + ':'
@@ -80,9 +80,8 @@ export function toggleClass(element, className) {
 }
 
 /**
- * 中划线字符驼峰
- * @param {*} str 要转换的字符串
- * @returns 返回值
+ * @param {*} str
+ * @returns
  */
 export function toHump(str) {
   if (!str) return str

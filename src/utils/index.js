@@ -18,7 +18,6 @@ import permission from '@/directive/permission'
 Vue.use(Element)
 Vue.use(permission)
 
-// 注册成为全局的组件
 Vue.component('TableHeader', TableHeader)
 Vue.component('TableFooter', TableFooter)
 Vue.component('TableBody', TableBody)
@@ -47,9 +46,9 @@ Vue.prototype.$errorMsg = function (message = '') {
   })
 }
 Vue.prototype.$showConfirmDialog = function (message = '') {
-  return this.$confirm(message, '提示', {
-    confirmButtonText: '确定',
-    cancelButtonText: '取消',
+  return this.$confirm(message, 'tips', {
+    confirmButtonText: 'Confirm',
+    cancelButtonText: 'Cancel',
     type: 'warning'
   })
 }

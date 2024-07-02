@@ -23,7 +23,7 @@ export default {
     },
     text: {
       type: String,
-      default: '提交'
+      default: 'submit'
     },
     onSubmit: {
       type: Function,

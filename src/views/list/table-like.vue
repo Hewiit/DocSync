@@ -7,7 +7,7 @@
           size="mini"
           icon="el-icon-delete"
           @click="deleteMultiItem"
-        >取消收藏
+        >Cancel Collection
         </el-button>
       </template>
     </TableHeader>
@@ -29,7 +29,7 @@
           />
           <el-table-column
             align="center"
-            label="序号"
+            label="Index"
             width="80"
           >
             <template slot-scope="scope">
@@ -38,36 +38,36 @@
           </el-table-column>
           <el-table-column
             align="center"
-            label="文件名"
+            label="File Name"
             prop="name"
           />
           <el-table-column
             align="center"
-            label="文件id"
+            label="File ID"
             prop="word_id"
             width="100"
           />
           <el-table-column
             align="center"
-            label="创建时间"
+            label="Creation Time"
             prop="create_time"
             width="180"
           />
           <el-table-column
             align="center"
-            label="是否有人编辑"
+            label="Is Editing"
             prop="is_editing"
             width="100"
           />
           <el-table-column
             align="center"
-            label="是否公开"
+            label="Is Public"
             prop="open"
             width="80"
           />
           <el-table-column
             align="center"
-            label="操作"
+            label="Operation"
             width="260"
           >
             <template slot-scope="scope">
@@ -76,14 +76,14 @@
                 :underline="false"
                 icon="el-icon-reading"
                 @click="onRichTextEditor(scope.row)"
-              >查看</el-button>
+              >View</el-button>
               <el-button
                 size="mini"
                 type="danger"
                 :underline="false"
                 icon="el-icon-star-off"
                 @click="deleteItem(scope.row)"
-              >取消收藏</el-button>
+              >Cancel Collection</el-button>
             </template>
           </el-table-column>
         </el-table>
@@ -169,41 +169,36 @@ export default {
       this.cancelLikeList = items
     },
     deleteMultiItem() {
-      this.$confirm('此操作将取消收藏您选中的所有文件, 是否继续?', '提示', {
-          confirmButtonText: '确定',
-          cancelButtonText: '取消',
-          type: 'warning'
+      this.$confirm('This action will cancel collection for selected files. Continue?', 'Warning', {
+        confirmButtonText: 'OK',
+        cancelButtonText: 'Cancel',
+        type: 'warning'
       }).then(() => {
         for (let i = 0; i < this.cancelLikeList.length; i++) {
           this.cancelLike(this.cancelLikeList[i])
         }
         this.Refresh()
-        }).catch(() => {
-          this.$message({
-            type: 'info',
-            message: '已取消操作'
-          })
+      }).catch(() => {
+        this.$message({
+          type: 'info',
+          message: 'Cancelled operation'
         })
+      })
     },
     deleteItem(item) {
-      this.$confirm('此操作将取消收藏此文件, 是否继续?', '提示', {
-          confirmButtonText: '确定',
-          cancelButtonText: '取消',
-          type: 'warning'
+      this.$confirm('This action will cancel collection for this file. Continue?', 'Warning', {
+        confirmButtonText: 'OK',
+        cancelButtonText: 'Cancel',
+        type: 'warning'
       }).then(() => {
         this.cancelLike(item)
         this.Refresh()
-          // console.log(item.id)
-          // this.$message({
-          //   type: 'success',
-          //   message: '解散成功!'
-          // })
-        }).catch(() => {
-          this.$message({
-            type: 'info',
-            message: '已取消操作'
-          })
+      }).catch(() => {
+        this.$message({
+          type: 'info',
+          message: 'Cancelled operation'
         })
+      })
     },
     cancelLike(item) {
       this.form_quitLike.word_id = item.word_id
@@ -238,8 +233,8 @@ export default {
               words.create_time = res.data.collect_word_list[i].create_time
               words.edit_time = res.data.collect_word_list[i].edit_time
               words.last_id = res.data.collect_word_list[i].last_edit_user_id
-              words.is_editing = res.data.collect_word_list[i].is_editing === 1 ? '是' : '否'
-              words.open = res.data.collect_word_list[i].open === 1 ? '是' : '否'
+              words.is_editing = res.data.collect_word_list[i].is_editing === 1 ? 'Yes' : 'No'
+              words.open = res.data.collect_word_list[i].open === 1 ? 'Yes' : 'No'
               let flag = 0
               for (let i = 0; i < this.likedWordList.length; i++) {
                 if (this.likedWordList[i].word_id === words.word_id) {
@@ -277,7 +272,7 @@ export default {
     beforeUpload(file) {
       const size = file.size
       if (size / 1024 > 500) {
-        this.$errorMsg('上传文件最大不能超过500K')
+        this.$errorMsg('Uploaded file size cannot exceed 500K')
         return false
       }
     }

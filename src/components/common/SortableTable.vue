@@ -2,7 +2,7 @@
   <el-tooltip
     class="item"
     effect="dark"
-    content="列设置"
+    content="Column settings"
     placement="top"
   >
     <el-popover
@@ -18,11 +18,11 @@
           v-model="allChecked"
           :indeterminate="isIndeterminate"
           @change="onAllChange"
-        >全选</el-checkbox>
+        >all selected</el-checkbox>
         <el-button
           type="text"
           @click="onReset"
-        >重置</el-button>
+        >reset</el-button>
       </div>
       <draggable
         v-model="innerTableProps"

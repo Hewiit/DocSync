@@ -2,12 +2,12 @@
   <div class="main-container">
     <el-card :body-style="{padding: '0'}">
       <template #header>
-        <el-link :underline="false">文章标题</el-link>
+        <el-link :underline="false">Article Title</el-link>
       </template>
       <el-input
         v-model="title"
         class="title-input"
-        placeholder="请输入文章标题"
+        placeholder="Enter article title"
       />
     </el-card>
     <el-card
@@ -16,11 +16,11 @@
     >
       <template #header>
         <div class="flex">
-          <el-link :underline="false">文章内容</el-link>
+          <el-link :underline="false">Article Content</el-link>
           <div class="flex-sub"></div>
         </div>
       </template>
-      <!-- <el-dialog title="分享二维码" :visible.sync="dialogVisible_share">
+      <!-- <el-dialog title="Share QR Code" :visible.sync="dialogVisible_share">
         <div>
           <image
             :src="imgUrl"
@@ -35,13 +35,13 @@
     </el-card>
     <div
       v-if="htmlContent"
-      class="margin-top padding priview-content"
+      class="margin-top padding preview-content"
       v-html="htmlContent"
     >
     </div>
     <div
       v-if="jsonContent"
-      class="margin-top padding priview-content"
+      class="margin-top padding preview-content"
     >
       {{ jsonContent }}
     </div>
@@ -114,11 +114,11 @@ export default {
   methods: {
     getContent() {
       this.$axios.post('/worddocx/look', qs.stringify(this.form))
-      .then(res => {
-        if (res.data.result === 2) {
-          localStorage.setItem('user_word_content', res.data.word_content)
-        }
-      })
+        .then(res => {
+          if (res.data.result === 2) {
+            localStorage.setItem('user_word_content', res.data.word_content)
+          }
+        })
     },
     getHtmlContent() {
       this.htmlContent = this.$refs.richTextEditor.getHtmlContent()
@@ -150,11 +150,11 @@ export default {
   font-size: 14px;
   font-style: normal;
 }
-.theme-dark .priview-content {
+.theme-dark .preview-content {
   background: #5a5a5a;
   color: #fff;
 }
-.priview-content {
+.preview-content {
   background: #fff;
   color: #333;
 }

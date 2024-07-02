@@ -16,7 +16,7 @@ router.beforeEach((to, from, next) => {
     next()
     NProgress.done()
   } else if (to.name !== 'login' && !getters.getToken(state) && to.name !== 'register' && to.name !== 'forget' && to.name !== 'share') {
-    alert('请先登录！')
+    alert('Please log in first！')
     next({ name: 'login' })
     NProgress.done()
   } else {

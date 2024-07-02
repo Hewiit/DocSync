@@ -81,7 +81,7 @@ export default {
               name: 'personalCenter',
               component: () => import('@/views/personal'),
               meta: {
-                title: '个人中心'
+                title: 'Personal Center'
               }
             }
           ]
@@ -97,8 +97,7 @@ export default {
               name: 'richText',
               component: () => import('@/views/editor/rich-text'),
               meta: {
-                title: '文档编辑'
-
+                title: 'Document Editing'
               }
             }
           ]
@@ -114,7 +113,7 @@ export default {
               name: 'richTextGroup',
               component: () => import('@/views/editor/rich-text-group'),
               meta: {
-                title: '团队文档编辑'
+                title: 'Team Document Editing'
               }
             }
           ]
@@ -130,7 +129,7 @@ export default {
               name: 'richTextReadOnly',
               component: () => import('@/views/editor/rich-text-readonly'),
               meta: {
-                title: '只读文档'
+                title: 'Read-only Document'
               }
             }
           ]
@@ -146,7 +145,7 @@ export default {
               name: 'tableTemplate',
               component: () => import('@/views/list/table-template'),
               meta: {
-                title: '模板选择'
+                title: 'Template Selection'
               }
             }
           ]
@@ -162,7 +161,7 @@ export default {
               name: 'tableLatest',
               component: () => import('@/views/list/table-latest'),
               meta: {
-                title: '最近浏览文件'
+                title: 'Recently Viewed Files'
               }
             }
           ]
@@ -178,7 +177,7 @@ export default {
               name: 'tableLike',
               component: () => import('@/views/list/table-like'),
               meta: {
-                title: '最近收藏文件'
+                title: 'Recently Favorited Files'
               }
             }
           ]
@@ -194,7 +193,7 @@ export default {
               name: 'tableCreated',
               component: () => import('@/views/list/table-created'),
               meta: {
-                title: '个人文件'
+                title: 'Personal Files'
               }
             }
           ]
@@ -210,7 +209,7 @@ export default {
               name: 'tableShare',
               component: () => import('@/views/list/table-share'),
               meta: {
-                title: '共享给我'
+                title: 'Shared with Me'
               }
             }
           ]
@@ -226,7 +225,7 @@ export default {
               name: 'tableGroup',
               component: () => import('@/views/list/table-group'),
               meta: {
-                title: '团队空间'
+                title: 'Team Space'
               }
             }
           ]
@@ -242,7 +241,7 @@ export default {
               name: 'tableGroupMember',
               component: () => import('@/views/list/table-group-member'),
               meta: {
-                title: '团队成员'
+                title: 'Team Members'
               }
             }
           ]
@@ -258,7 +257,7 @@ export default {
               name: 'tableGroupFile',
               component: () => import('@/views/list/table-group-file'),
               meta: {
-                title: '团队文件'
+                title: 'Team Files'
               }
             }
           ]
@@ -274,7 +273,7 @@ export default {
               name: 'tableRecover',
               component: () => import('@/views/list/table-recover'),
               meta: {
-                title: '回收站'
+                title: 'Recycle Bin'
               }
             }
           ]
@@ -304,7 +303,6 @@ export default {
     }
   },
   mounted() {
-    // 隐藏侧边栏
     if (this.$route.meta.hiddenSiderbar) {
       this.hiddenSiderbar = true
     } else {
@@ -318,7 +316,7 @@ export default {
 @import "../../assets/styles/variables.scss";
 .open-status {
   width: $menuWidth;
-  box-shadow: 2px 5px 5px rgb(202, 202, 202, 0.8);
+  box-shadow: 2px 5px 5px rgb(47, 187, 212);
   transition: all $transitionTime;
 }
 .close-status {

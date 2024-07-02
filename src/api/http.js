@@ -7,11 +7,11 @@ Vue.prototype.$http = function ({ url, data, method = 'GET', headers, beforeRequ
     if (res.code === 200) {
       return res
     }
-    throw new Error(res.msg || '请求失败，未知异常')
+    throw new Error(res.msg || 'The request failed and an unknown exception occurred')
   }
   const failHandler = error => {
     afterRequest && afterRequest()
-    throw new Error(error.msg || '请求失败，未知异常')
+    throw new Error(error.msg || 'The request failed and an unknown exception occurred')
   }
   beforeRequest && beforeRequest()
 

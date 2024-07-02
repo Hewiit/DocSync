@@ -5,7 +5,7 @@
         <el-link
           :underline="false"
           type="primary"
-        >通知提示</el-link>
+        >Notification Tips</el-link>
       </div>
       <div class="padding">
         <el-button
@@ -13,31 +13,31 @@
           type="primary"
           plain
           @click="openNotify('primary')"
-        >普通</el-button>
+        >Normal</el-button>
         <el-button
           size="small"
           type="success"
           plain
           @click="openNotify('success')"
-        >成功</el-button>
+        >Success</el-button>
         <el-button
           size="small"
           type="warning"
           plain
           @click="openNotify('warning')"
-        >警告</el-button>
+        >Warning</el-button>
         <el-button
           size="small"
           type="danger"
           plain
           @click="openNotify('danger')"
-        >错误</el-button>
+        >Error</el-button>
         <el-button
           size="small"
           type="info"
           plain
           @click="openNotify('html')"
-        >带有HTML片段</el-button>
+        >With HTML Fragment</el-button>
       </div>
     </el-card>
     <el-card :body-style="{padding: 0}">
@@ -45,7 +45,7 @@
         <el-link
           :underline="false"
           type="primary"
-        >确认对话框</el-link>
+        >Confirmation Dialog</el-link>
       </div>
       <div class="padding">
         <el-button
@@ -53,19 +53,19 @@
           type="primary"
           plain
           @click="openConfirm('primary')"
-        >普通</el-button>
+        >Normal</el-button>
         <el-button
           size="small"
           type="warning"
           plain
           @click="openConfirm('warning')"
-        >确认</el-button>
+        >Confirmation</el-button>
         <el-button
           size="small"
           type="info"
           plain
           @click="openConfirm('html')"
-        >带有HTML片段</el-button>
+        >With HTML Fragment</el-button>
       </div>
     </el-card>
     <el-card :body-style="{padding: 0}">
@@ -73,7 +73,7 @@
         <el-link
           :underline="false"
           type="primary"
-        >消息提示</el-link>
+        >Message Tips</el-link>
       </div>
       <div class="padding">
         <el-button
@@ -81,31 +81,31 @@
           type="primary"
           plain
           @click="openMessage('primary')"
-        >普通</el-button>
+        >Normal</el-button>
         <el-button
           size="small"
           type="success"
           plain
           @click="openMessage('success')"
-        >成功</el-button>
+        >Success</el-button>
         <el-button
           size="small"
           type="warning"
           plain
           @click="openMessage('warning')"
-        >警告</el-button>
+        >Warning</el-button>
         <el-button
           size="small"
           type="danger"
           plain
           @click="openMessage('danger')"
-        >错误</el-button>
+        >Error</el-button>
         <el-button
           size="small"
           type="info"
           plain
           @click="openMessage('html')"
-        >带有HTML片段</el-button>
+        >With HTML Fragment</el-button>
       </div>
     </el-card>
   </div>
@@ -119,39 +119,39 @@ export default {
       switch (type) {
         case 'primary':
           this.$notify({
-            title: '提示',
-            message: '用户名或者密码错误'
+            title: 'Notification',
+            message: 'Username or password is incorrect.'
           })
           break
         case 'success':
           this.$notify({
-            title: '提示',
-            message: '恭喜，登录成功',
+            title: 'Notification',
+            message: 'Congratulations, login successful.',
             type: 'success'
           })
           break
         case 'warning':
           this.$notify({
-            title: '提示',
-            message: '确定要删除此选项吗？',
+            title: 'Notification',
+            message: 'Are you sure you want to delete this item?',
             type: 'warning'
           })
           break
         case 'danger':
           this.$notify({
-            title: '提示',
-            message: '操作失败，请检查请求参数',
+            title: 'Notification',
+            message: 'Operation failed. Please check the request parameters.',
             type: 'error'
           })
           break
         case 'html':
           this.$notify({
-            title: '请根据以下步骤进行操作',
+            title: 'Follow these steps to proceed',
             dangerouslyUseHTMLString: true,
             message: `<ul>
-            <li style="color: red">选择图片</li>
-            <li style="font-weight: bold">上传图片</li>
-            <li style="font-size: 20px">展示对应的图片</li>
+            <li style="color: red">Select image</li>
+            <li style="font-weight: bold">Upload image</li>
+            <li style="font-size: 20px">Display corresponding image</li>
             </ul>`
           })
           break
@@ -160,40 +160,40 @@ export default {
     openConfirm(type) {
       switch (type) {
         case 'primary':
-          this.$alert('确定要退出当前系统吗？', '提示', {
-            confirmButtonText: '确定',
+          this.$alert('Are you sure you want to exit the current system?', 'Confirmation', {
+            confirmButtonText: 'Confirm',
             callback: action => {
               this.$notify({
-                title: '提示',
-                message: '已退出当前系统',
+                title: 'Notification',
+                message: 'You have exited the current system.',
                 type: 'success'
               })
             }
           })
           break
         case 'warning':
-          this.$confirm('此操作将永久删除该文件, 是否继续?', '重要提示', {
-            confirmButtonText: '删除',
-            cancelButtonText: '再想想',
+          this.$confirm('This operation will permanently delete this file. Continue?', 'Important Notice', {
+            confirmButtonText: 'Delete',
+            cancelButtonText: 'Cancel',
             type: 'warning'
           }).then(() => {
             this.$message({
               type: 'success',
-              message: '删除成功!'
+              message: 'Deleted successfully!'
             })
           }).catch(() => {
             this.$message({
               type: 'info',
-              message: '已取消删除'
+              message: 'Deletion canceled.'
             })
           })
           break
         case 'html':
           this.$alert(`<ul>
-            <li style="color: red">选择图片</li>
-            <li style="font-weight: bold">上传图片</li>
-            <li style="font-size: 20px">展示对应的图片</li>
-            </ul>`, '请按以下步骤进行操作', {
+            <li style="color: red">Select image</li>
+            <li style="font-weight: bold">Upload image</li>
+            <li style="font-size: 20px">Display corresponding image</li>
+            </ul>`, 'Follow these steps to proceed', {
             dangerouslyUseHTMLString: true
           })
           break
@@ -202,23 +202,23 @@ export default {
     openMessage(type) {
       switch (type) {
         case 'primary':
-          this.$message('您有10+条未读消息，请立即查看')
+          this.$message('You have 10+ unread messages. Please check now.')
           break
         case 'success':
           this.$message({
-            message: '恭喜，登录成功',
+            message: 'Congratulations, login successful.',
             type: 'success'
           })
           break
         case 'warning':
           this.$message({
-            message: '未选择任何要删除的条目',
+            message: 'No item selected for deletion.',
             type: 'warning'
           })
           break
         case 'danger':
           this.$message({
-            message: '操作失败，请检查请求参数',
+            message: 'Operation failed. Please check the request parameters.',
             type: 'error'
           })
           break
@@ -226,9 +226,9 @@ export default {
           this.$message({
             dangerouslyUseHTMLString: true,
             message: `<ul>
-            <li style="color: red">选择图片</li>
-            <li style="font-weight: bold">上传图片</li>
-            <li style="font-size: 20px">展示对应的图片</li>
+            <li style="color: red">Select image</li>
+            <li style="font-weight: bold">Upload image</li>
+            <li style="font-size: 20px">Display corresponding image</li>
             </ul>`
           })
           break

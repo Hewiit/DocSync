@@ -10,13 +10,13 @@
       <div class="left"></div>
       <div class="right">
         <div class="my-width flex-sub flex justify-center align-center">
-          <div class="title margin-left">注册</div>
+          <div class="title margin-left">Register</div>
         </div>
         <el-form :model="form" class="form-container">
           <div class="item-wrapper">
             <el-input
               v-model="form.email"
-              placeholder="请输入邮箱"
+              placeholder="please input the email"
               prefix-icon="el-icon-user"
               clearable
             />
@@ -27,13 +27,13 @@
               class="login"
               @click="identifier_send"
             >
-              发送验证码
+              send the indentification
             </el-button>
           </div>
           <div class="item-wrapper margin-top-lg">
             <el-input
               v-model="form.indentify_code"
-              placeholder="请输入验证码"
+              placeholder="please input the code"
               type="password"
               clearable
               prefix-icon="el-icon-lock"
@@ -43,7 +43,7 @@
           <div class="item-wrapper">
             <el-input
               v-model="form.username"
-              placeholder="请输入用户名"
+              placeholder="please input the username"
               prefix-icon="el-icon-user"
               clearable
             />
@@ -51,7 +51,7 @@
           <div class="item-wrapper margin-top-lg">
             <el-input
               v-model="form.password1"
-              placeholder="请输入密码"
+              placeholder="please input the password"
               type="password"
               clearable
               prefix-icon="el-icon-lock"
@@ -60,7 +60,7 @@
           <div class="item-wrapper margin-top-lg">
             <el-input
               v-model="form.password2"
-              placeholder="请确认密码"
+              placeholder="please confirm the password"
               type="password"
               clearable
               prefix-icon="el-icon-lock"
@@ -73,7 +73,7 @@
               class="login"
               @click="register"
             >
-              确定
+              Confirm
             </el-button>
           </div>
           <div class="margin-top-rg">
@@ -83,7 +83,7 @@
               type="info"
               @click="back"
             >
-              返回
+              Back
             </el-button>
           </div>
         </el-form>
@@ -96,7 +96,7 @@
 </template>
 
 <script>
-import ImageBg1 from '@/assets/img_login_bg_01.jpg'
+import ImageBg1 from '@/assets/img_login_bg_01.png'
 import ImageMobileBg1 from '@/assets/img_login_mobile_bg_01.jpg'
 import PageFooter from '@/layouts/footer'
 import 'vaw-verify/lib/vaw-verify.css'
@@ -139,35 +139,35 @@ export default {
   methods: {
     register() {
       if (!this.form.email) {
-        this.$errorMsg('请输入邮箱')
+        this.$errorMsg('Please enter your email')
         return
       }
       if (this.form.email.length > 30) {
-        this.$errorMsg('邮箱长度不应超过30位')
+        this.$errorMsg('Email length should not exceed 30 characters')
         return
       }
       if (!this.form.indentify_code) {
-        this.$errorMsg('请输入验证码')
+        this.$errorMsg('Please enter the verification code')
         return
       }
       if (!this.form.username) {
-        this.$errorMsg('请输入用户名')
+        this.$errorMsg('Please enter a username')
         return
       }
       if (this.form.username.length > 20) {
-        this.$errorMsg('用户名长度不应超过20位')
+        this.$errorMsg('Username length should not exceed 20 characters')
         return
       }
       if (!this.form.password1) {
-        this.$errorMsg('请输入密码')
+        this.$errorMsg('Please enter a password')
         return
       }
       if (this.form.password1.length > 20) {
-        this.$errorMsg('密码长度不应超过20位')
+        this.$errorMsg('Password length should not exceed 20 characters')
         return
       }
       if (!this.form.password2) {
-        this.$errorMsg('请确认密码')
+        this.$errorMsg('Please confirm your password')
         return
       }
       this.$axios.post(

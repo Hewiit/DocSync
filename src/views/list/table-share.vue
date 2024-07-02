@@ -22,7 +22,7 @@
           />
           <el-table-column
             align="center"
-            label="序号"
+            label="Number"
             width="60"
           >
             <template slot-scope="scope">
@@ -31,36 +31,36 @@
           </el-table-column>
           <el-table-column
             align="center"
-            label="文件名"
+            label="File Name"
             prop="name"
           />
           <el-table-column
             align="center"
-            label="文件id"
+            label="File ID"
             prop="id"
             width="100"
           />
           <el-table-column
             align="center"
-            label="创建时间"
+            label="Creation Time"
             prop="create_time"
             width="180"
           />
           <el-table-column
             align="center"
-            label="是否有人编辑"
+            label="Is Editing"
             prop="is_editing"
             width="100"
           />
           <el-table-column
             align="center"
-            label="是否公开"
+            label="Is Public"
             prop="open"
             width="80"
           />
           <el-table-column
             align="center"
-            label="操作"
+            label="Operation"
             width="260"
           >
             <template slot-scope="scope">
@@ -69,14 +69,14 @@
                 :underline="false"
                 icon="el-icon-edit"
                 @click="onRichTextEditor(scope.row)"
-              >编辑</el-button>
+              >Edit</el-button>
               <el-button
                 size="mini"
                 type="danger"
                 :underline="false"
                 icon="el-icon-delete"
                 @click="deleteItem(scope.row)"
-              >退出协作</el-button>
+              >Quit Cooperation</el-button>
             </template>
           </el-table-column>
         </el-table>
@@ -101,9 +101,9 @@ import store from '@/layouts/store'
 import { getters } from '@/store/modules/user.js'
 import { state } from '@/store/modules/user.js'
 import qs from 'qs'
+
 export default {
   name: 'TableShare',
-  // eslint-disable-next-line vue/no-unused-components
   components: { SingleUpload, BaseForm },
   directives: { draggable },
   mixins: [
@@ -157,18 +157,18 @@ export default {
   },
   methods: {
     deleteItem(item) {
-      this.$confirm('此操作将使您退出该文档的协作, 是否继续?', '提示', {
-          confirmButtonText: '确定',
-          cancelButtonText: '取消',
-          type: 'warning'
+      this.$confirm('This action will remove you from collaborating on this document. Continue?', 'Prompt', {
+        confirmButtonText: 'OK',
+        cancelButtonText: 'Cancel',
+        type: 'warning'
       }).then(() => {
         this.quitCooperate(item)
-        }).catch(() => {
-          this.$message({
-            type: 'info',
-            message: '已取消退出'
-          })
+      }).catch(() => {
+        this.$message({
+          type: 'info',
+          message: 'Cancelled exit'
         })
+      })
     },
     quitCooperate(item) {
       this.form_quitCooperate.word_id = item.id
@@ -199,16 +199,16 @@ export default {
               cooperationWords.id = res.data.cooperation_word_list[i].word_id
               cooperationWords.name = res.data.cooperation_word_list[i].word_name
               cooperationWords.create_time = res.data.cooperation_word_list[i].create_time
-              cooperationWords.is_editing = res.data.cooperation_word_list[i].is_editing === 1 ? '是' : '否'
-              cooperationWords.open = res.data.cooperation_word_list[i].open === 1 ? '是' : '否'
+              cooperationWords.is_editing = res.data.cooperation_word_list[i].is_editing === 1 ? 'Yes' : 'No'
+              cooperationWords.open = res.data.cooperation_word_list[i].open === 1 ? 'Yes' : 'No'
               let flag = 0
-               for (let i = 0; i < this.cooperationWordList.length; i++) {
-                 if (this.cooperationWordList[i].id === cooperationWords.id) {
-                   flag = 1
-                   break
-                 }
-               }
-               if (!flag) { this.cooperationWordList.push(cooperationWords) }
+              for (let i = 0; i < this.cooperationWordList.length; i++) {
+                if (this.cooperationWordList[i].id === cooperationWords.id) {
+                  flag = 1
+                  break
+                }
+              }
+              if (!flag) { this.cooperationWordList.push(cooperationWords) }
             }
           }
           this.loading = false
@@ -258,7 +258,7 @@ export default {
     beforeUpload(file) {
       const size = file.size
       if (size / 1024 > 500) {
-        this.$errorMsg('上传文件最大不能超过500K')
+        this.$errorMsg('Uploaded file size cannot exceed 500K')
         return false
       }
     }

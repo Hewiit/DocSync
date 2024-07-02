@@ -10,13 +10,13 @@
       <div class="left"></div>
       <div class="right">
         <div class="my-width flex-sub flex justify-center align-center">
-          <div class="title margin-left">忘记密码</div>
+          <div class="title margin-left">Forgot Password</div>
         </div>
         <el-form :model="form" class="form-container">
           <div class="item-wrapper">
             <el-input
               v-model="form.email"
-              placeholder="请输入邮箱"
+              placeholder="Please enter your email"
               prefix-icon="el-icon-user"
               clearable
             />
@@ -26,13 +26,13 @@
               class="login"
               @click="identifier_send"
             >
-              发送验证码
+              Send Verification Code
             </el-button>
           </div>
           <div class="item-wrapper margin-top-lg">
             <el-input
               v-model="form.indentify_code"
-              placeholder="请输入验证码"
+              placeholder="Please enter the verification code"
               type="password"
               clearable
               prefix-icon="el-icon-lock"
@@ -41,7 +41,7 @@
           <div class="item-wrapper margin-top-lg">
             <el-input
               v-model="form.password1"
-              placeholder="请输入密码"
+              placeholder="Please enter password"
               type="password"
               clearable
               prefix-icon="el-icon-lock"
@@ -50,7 +50,7 @@
           <div class="item-wrapper margin-top-lg">
             <el-input
               v-model="form.password2"
-              placeholder="请确认密码"
+              placeholder="Please confirm password"
               type="password"
               clearable
               prefix-icon="el-icon-lock"
@@ -62,7 +62,7 @@
               class="login"
               @click="change"
             >
-              确定
+              Confirm
             </el-button>
           </div>
           <div class="margin-top-rg">
@@ -71,7 +71,7 @@
               class="login"
               @click="back"
             >
-              返回
+              Return
             </el-button>
           </div>
         </el-form>
@@ -84,7 +84,7 @@
 </template>
 
 <script>
-import ImageBg1 from '@/assets/img_login_bg_01.jpg'
+import ImageBg1 from '@/assets/img_login_bg_01.png'
 import ImageMobileBg1 from '@/assets/img_login_mobile_bg_01.jpg'
 import PageFooter from '@/layouts/footer'
 import 'vaw-verify/lib/vaw-verify.css'
@@ -126,19 +126,19 @@ export default {
   methods: {
     change() {
       if (!this.form.email) {
-        this.$errorMsg('请输入邮箱')
+        this.$errorMsg('Please enter your email')
         return
       }
       if (!this.form.indentify_code) {
-        this.$errorMsg('请输入验证码')
+        this.$errorMsg('Please enter the verification code')
         return
       }
       if (!this.form.password1) {
-        this.$errorMsg('请输入密码')
+        this.$errorMsg('Please enter password')
         return
       }
       if (!this.form.password2) {
-        this.$errorMsg('请确认密码')
+        this.$errorMsg('Please confirm password')
         return
       }
       this.$axios.post(
@@ -156,7 +156,7 @@ export default {
     },
     identifier_send() {
       if (!this.form.email) {
-        this.$errorMsg('请输入邮箱')
+        this.$errorMsg('Please enter your email')
         return
       }
       this.$axios.post(
@@ -201,7 +201,7 @@ export default {
       width: 50px;
     }
     & img::after {
-      content: "欢迎来到金刚石文档";
+      content: "Welcome to DocSync";
     }
   }
   .login-footer-wrapper {

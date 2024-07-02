@@ -18,13 +18,13 @@
         v-if="showCancel"
         size="mini"
         @click="dialogVisible = false"
-      >取 消</el-button>
+      >Cancel</el-button>
       <el-button
         v-if="!submitButton"
         type="primary"
         size="mini"
         @click="onConfirm"
-      >确 定</el-button>
+      >Confirm</el-button>
       <submit-button
         v-else
         :on-submit="onConfirm"
@@ -40,7 +40,7 @@ export default {
   props: {
     title: {
       type: String,
-      default: '提示'
+      default: 'tip'
     },
     closeOnClickModal: {
       type: Boolean,
@@ -70,7 +70,7 @@ export default {
     show(config = {}) {
       config.beforeShowAction && config.beforeShowAction()
       this.autoClose = config.autoClose || false
-      this.innerTitle = config.innerTitle || this.title || '提示'
+      this.innerTitle = config.innerTitle || this.title || 'tips'
       this.onConfirmCallback = config.onConfirmCallback
       this.dialogVisible = true
     },

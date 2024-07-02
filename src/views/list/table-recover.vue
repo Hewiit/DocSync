@@ -6,14 +6,14 @@
           size="mini"
           icon="el-icon-plus"
           @click="recoverMutiItem"
-        >恢复
+        >Recover
         </el-button>
         <el-button
           type="danger"
           size="mini"
           icon="el-icon-delete-solid"
           @click="deleteMultiItem"
-        >彻底删除
+        >Delete Permanently
         </el-button>
       </template>
     </TableHeader>
@@ -35,7 +35,7 @@
           />
           <el-table-column
             align="center"
-            label="序号"
+            label="Number"
             width="60"
           >
             <template slot-scope="scope">
@@ -44,36 +44,36 @@
           </el-table-column>
           <el-table-column
             align="center"
-            label="文件名"
+            label="File Name"
             prop="name"
           />
           <el-table-column
             align="center"
-            label="文件id"
+            label="File ID"
             prop="word_id"
             width="100"
           />
           <el-table-column
             align="center"
-            label="创建时间"
+            label="Creation Time"
             prop="create_time"
             width="180"
           />
           <el-table-column
             align="center"
-            label="是否公开"
+            label="Is Public"
             prop="open"
             width="80"
           />
           <el-table-column
             align="center"
-            label="删除时间"
+            label="Deletion Time"
             prop="deleteTime"
             width="180px"
           />
           <el-table-column
             align="center"
-            label="操作"
+            label="Operation"
             width="260"
           >
             <template slot-scope="scope">
@@ -82,20 +82,19 @@
                 :underline="false"
                 icon="el-icon-refresh-right"
                 @click="Recover(scope.row)"
-              >恢复</el-button>
+              >Recover</el-button>
               <el-button
                 size="mini"
                 type="danger"
                 :underline="false"
                 icon="el-icon-delete-solid"
                 @click="deleteItem(scope.row)"
-              >彻底删除</el-button>
+              >Delete Permanently</el-button>
             </template>
           </el-table-column>
         </el-table>
       </template>
     </TableBody>
-
   </div>
 </template>
 
@@ -114,9 +113,9 @@ import draggable from '@/directive/draggable'
 import { getters } from '@/store/modules/user.js'
 import { state } from '@/store/modules/user.js'
 import qs from 'qs'
+
 export default {
   name: 'TableRecover',
-  // eslint-disable-next-line vue/no-unused-components
   components: { SingleUpload, BaseForm },
   directives: { draggable },
   mixins: [
@@ -166,9 +165,9 @@ export default {
       this.deleteList = vals
     },
     recoverMutiItem() {
-      this.$confirm('此操作将恢复您选中的所有文件, 是否继续?', '提示', {
-        confirmButtonText: '确定',
-        cancelButtonText: '取消',
+      this.$confirm('This operation will recover all selected files. Continue?', 'Prompt', {
+        confirmButtonText: 'OK',
+        cancelButtonText: 'Cancel',
         type: 'warning'
       }).then(() => {
         for (let i = 0; i < this.deleteList.length; i++) {
@@ -178,40 +177,40 @@ export default {
       }).catch(() => {
         this.$message({
           type: 'info',
-          message: '已取消恢复'
+          message: 'Cancelled recovery'
         })
       })
     },
     deleteMultiItem() {
-      this.$confirm('此操作将彻底删除您选中的所有文件, 是否继续?', '提示', {
-          confirmButtonText: '确定',
-          cancelButtonText: '取消',
-          type: 'warning'
+      this.$confirm('This operation will permanently delete all selected files. Continue?', 'Prompt', {
+        confirmButtonText: 'OK',
+        cancelButtonText: 'Cancel',
+        type: 'warning'
       }).then(() => {
         for (let i = 0; i < this.deleteList.length; i++) {
           this.Delete(this.deleteList[i])
         }
         this.Refresh()
-        }).catch(() => {
-          this.$message({
-            type: 'info',
-            message: '已取消删除'
-          })
+      }).catch(() => {
+        this.$message({
+          type: 'info',
+          message: 'Cancelled deletion'
         })
+      })
     },
     deleteItem(item) {
-      this.$confirm('此操作将彻底删除此文件, 是否继续?', '提示', {
-          confirmButtonText: '确定',
-          cancelButtonText: '取消',
-          type: 'warning'
+      this.$confirm('This operation will permanently delete this file. Continue?', 'Prompt', {
+        confirmButtonText: 'OK',
+        cancelButtonText: 'Cancel',
+        type: 'warning'
       }).then(() => {
         this.Delete(item)
-        }).catch(() => {
-          this.$message({
-            type: 'info',
-            message: '已取消删除'
-          })
+      }).catch(() => {
+        this.$message({
+          type: 'info',
+          message: 'Cancelled deletion'
         })
+      })
     },
     Delete(item) {
       this.form1.word_id = item.word_id
@@ -260,8 +259,8 @@ export default {
               words.edit_time = res.data.user_delete_word_message_list[i].edit_time
               words.last_id = res.data.user_delete_word_message_list[i].last_edit_user_id
               words.deleteTime = res.data.user_delete_word_message_list[i].delete_time
-              words.is_editing = res.data.user_delete_word_message_list[i].is_editing === 1 ? '是' : '否'
-              words.open = res.data.user_delete_word_message_list[i].open === 1 ? '是' : '否'
+              words.is_editing = res.data.user_delete_word_message_list[i].is_editing === 1 ? 'Yes' : 'No'
+              words.open = res.data.user_delete_word_message_list[i].open === 1 ? 'Yes' : 'No'
               let flag = 0
               for (let i = 0; i < this.groupList.length; i++) {
                 if (this.groupList[i].word_id === words.word_id) {
@@ -286,7 +285,7 @@ export default {
     beforeUpload(file) {
       const size = file.size
       if (size / 1024 > 500) {
-        this.$errorMsg('上传文件最大不能超过500K')
+        this.$errorMsg('Uploaded file size cannot exceed 500K')
         return false
       }
     }

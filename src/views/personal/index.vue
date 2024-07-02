@@ -6,7 +6,7 @@
         shadow="hover"
       >
         <div class="flex justify-between padding-sm solid-bottom">
-          <el-link :underline="false">基本信息</el-link>
+          <el-link :underline="false">Basic info</el-link>
         </div>
         <el-form
           v-model="baseInfoModel"
@@ -16,21 +16,7 @@
           label-position="right"
         >
           <el-col :span="24">
-            <el-form-item label="头像">
-              <el-upload
-                :http-request="httpRequest"
-                :show-file-list="false"
-                action=""
-              >
-                <el-avatar
-                  :size="80"
-                  :src="personalInformation.avatar"
-                />
-              </el-upload>
-            </el-form-item>
-          </el-col>
-          <el-col :span="24">
-            <el-form-item label="名称">
+            <el-form-item label="name">
               <el-input
                 v-model="personalInformation.username"
                 :disabled="true"
@@ -46,7 +32,7 @@
             </el-form-item>
           </el-col>
           <el-col :span="24">
-            <el-form-item label="邮箱">
+            <el-form-item label="email">
               <el-input
                 v-model="personalInformation.email"
                 :disabled="true"
@@ -54,7 +40,7 @@
             </el-form-item>
           </el-col>
           <el-col :span="24">
-            <el-form-item label="密码">
+            <el-form-item label="password">
               <el-input
                 v-model="baseInfoModel.password"
                 :disabled="true"
@@ -64,22 +50,22 @@
                 type="Placeholder"
                 :underline="false"
                 @click="dialogVisible_changePassword = true"
-              >修改</el-button>
-              <el-dialog title="修改密码" :visible.sync="dialogVisible_changePassword" width="40%" center>
+              >Change</el-button>
+              <el-dialog title="Change Password" :visible.sync="dialogVisible_changePassword" width="40%" center>
                 <el-form :model="form_changePassword">
-                  <el-form-item label="原密码" :label-width="formLabelWidth">
+                  <el-form-item label="Old password" :label-width="formLabelWidth">
                     <el-input v-model="form_changePassword.password" autocomplete="off" type="password" />
                   </el-form-item>
-                  <el-form-item label="新密码" :label-width="formLabelWidth">
+                  <el-form-item label="New password" :label-width="formLabelWidth">
                     <el-input v-model="form_changePassword.password1" autocomplete="off" type="password" />
                   </el-form-item>
-                  <el-form-item label="确认密码" :label-width="formLabelWidth">
+                  <el-form-item label="Confirm the password" :label-width="formLabelWidth">
                     <el-input v-model="form_changePassword.password2" autocomplete="off" type="password" />
                   </el-form-item>
                 </el-form>
                 <div slot="footer" class="dialog-footer">
-                  <el-button @click="dialogVisible_changePassword = false, clearPassword()">取 消</el-button>
-                  <el-button @click="changePassword(), dialogVisible_changePassword = false, clearPassword()">确 定</el-button>
+                  <el-button @click="dialogVisible_changePassword = false, clearPassword()">Back</el-button>
+                  <el-button @click="changePassword(), dialogVisible_changePassword = false, clearPassword()">Confirm</el-button>
                 </div>
               </el-dialog>
             </el-form-item>
@@ -92,7 +78,7 @@
               style="margin-bottom: 20px"
               :underline="false"
               @click="logOff_1"
-            >注销账号</el-button>
+            >Delte The Account</el-button>
           </el-col>
         </el-form>
       </el-card>
@@ -116,7 +102,7 @@ export default {
         username: null,
         email: null,
         sex: null,
-        avatar: null,
+        avatar: 'https://www.bing.com/images/search?view=detailV2&ccid=4UL1l76J&id=996E0B3D6F6E8C01709931862851E87C70854E45&thid=OIP.4UL1l76JhZ43VtGNLLF7ugAAAA&mediaurl=https%3a%2f%2fth.bing.com%2fth%2fid%2fR.e142f597be89859e3756d18d2cb17bba%3frik%3dRU6FcHzoUSiGMQ%26riu%3dhttp%253a%252f%252fimg.touxiangwu.com%252fuploads%252fallimg%252f2021090522%252fvziucdhxmqa.jpg%26ehk%3dgBye%252fcUprgJqq2QAJqxXJVK2WipzM%252byvuCiGhjC1vdE%253d%26risl%3d%26pid%3dImgRaw%26r%3d0&exph=400&expw=400&q=%e5%a4%b4%e5%83%8f&simid=608015560007170595&FORM=IRPRST&ck=ECAE01F7053018569CD0D3DBBF6867B1&selectedIndex=76&itb=0',
         user_id: null
       },
       form_getPersonalInformation: {
@@ -150,63 +136,50 @@ export default {
     this.getPersonalInformation()
   },
   methods: {
-    httpRequest(file) {
-      this.file = file
-    },
-    submit() {
-      this.$axios.post('/user/upload_avatar', qs.stringify({ 'username': getters.getUserName(state), 'file': this.file }))
-      .then(res => {
-        if (res.data.result === 1) {
-          this.$message.success(res.data.message)
-        } else {
-          this.$message.error(res.data.message)
-        }
-      })
-    },
     clearPassword() {
       this.form_changePassword.password = ''
       this.form_changePassword.password1 = ''
       this.form_changePassword.password2 = ''
     },
     logOff_1() {
-      this.$confirm('此操作将删除此账户,请确定是否是用户本人操作?', '提示', {
-          confirmButtonText: '确定',
-          cancelButtonText: '取消',
+      this.$confirm('This operation will delete your account', 'tips', {
+          confirmButtonText: 'confirm',
+          cancelButtonText: 'back',
           type: 'warning'
       }).then(() => {
         this.logOff_2()
         }).catch(() => {
           this.$message({
             type: 'info',
-            message: '已取消注销'
+            message: 'already back'
           })
         })
     },
     logOff_2() {
-      this.$confirm('此操作将彻底删除此账户,并且会删除所有个人文件，退出所有团队，是否继续?(注意，如果有身为队长的团队则无法继续注销）', '提示', {
-          confirmButtonText: '确定',
-          cancelButtonText: '取消',
+      this.$confirm('This operation will delete all your data,continue?', 'tips', {
+          confirmButtonText: 'confirm',
+          cancelButtonText: 'back',
           type: 'warning'
       }).then(() => {
         this.logOff_3()
         }).catch(() => {
           this.$message({
             type: 'info',
-            message: '已取消注销'
+            message: 'already back'
           })
         })
     },
     logOff_3() {
-      this.$confirm('真的要离开我们吗', '提示', {
-          confirmButtonText: '确定',
-          cancelButtonText: '取消',
+      this.$confirm('Really?', 'tips', {
+          confirmButtonText: 'confirm',
+          cancelButtonText: 'back',
           type: 'warning'
       }).then(() => {
         this.logOff()
         }).catch(() => {
           this.$message({
             type: 'info',
-            message: '已取消注销'
+            message: 'already back'
           })
         })
     },
@@ -215,7 +188,7 @@ export default {
         .then((res) => {
           // console.log(5)
           if (res.data.result === 3) {
-            this.$message.success('非常感谢您对金刚石文档的支持，希望下次再会!')
+            this.$message.success('Thanks for your support!See you later!')
             // this.$router.push('/login')
             store.logout()
             store.onLogout && store.onLogout()
@@ -233,7 +206,6 @@ export default {
             this.personalInformation.username = res.data.username
             this.personalInformation.email = res.data.email
             this.personalInformation.sex = res.data.sex
-            this.personalInformation.avatar = res.data.avatar
             this.personalInformation.user_id = res.data.user_id
           } else {
             this.$message.error(res.data.message)
@@ -242,18 +214,16 @@ export default {
         })
     },
     logOff() {
-      this.$prompt('请输入原密码', '提示', {
-          confirmButtonText: '确定',
-          cancelButtonText: '取消'
-          // inputPattern: /[\w!#$%&'*+/=?^_`{|}~-]+(?:\.[\w!#$%&'*+/=?^_`{|}~-]+)*@(?:[\w](?:[\w-]*[\w])?\.)+[\w](?:[\w-]*[\w])?/,
-          // inputErrorMessage: '邮箱格式不正确'
+      this.$prompt('please input old password', 'tips', {
+          confirmButtonText: 'confirm',
+          cancelButtonText: 'back'
         }).then(({ value }) => {
           this.form_deleteUser.password = value
           this.deleteUser()
         }).catch(() => {
           this.$message({
             type: 'info',
-            message: '取消注销'
+            message: 'back'
           })
         })
     },
@@ -274,9 +244,6 @@ export default {
           }
         })
     },
-    handleAvatarSuccess(res, file) {
-      this.imageUrl = URL.createObjectURL(file.raw)
-    }
   }
 }
 </script>

@@ -29,15 +29,15 @@ export default {
       default: () => [
         {
           avatar: require('@/assets/img_avatar_01.jpeg'),
-          name: '悟空'
+          name: 'wukong'
         },
         {
           avatar: require('@/assets/img_avatar_02.jpeg'),
-          name: '唐僧'
+          name: 'tangseng'
         },
         {
           avatar: require('@/assets/img_avatar_example.gif'),
-          name: '哈哈'
+          name: 'haha'
         }
       ]
     }

@@ -6,18 +6,18 @@
   >
     <template #header>
       <div class="flex">
-        <el-link :underline="false">生成二维码</el-link>
+        <el-link :underline="false">generate the QRcode</el-link>
         <el-input
           v-model="qrText"
           class="flex-sub margin-lr"
           size="small"
-          placeholder="请输入文本内容"
+          placeholder="Please input"
         />
         <el-button
           type="primary"
           size="mini"
           @click="generatorCode"
-        >点击生成</el-button>
+        >Click to Generate</el-button>
       </div>
     </template>
     <div
@@ -31,7 +31,7 @@
       />
       <div class="setting-wrapper margin-top">
         <div class="flex justify-between align-center">
-          <span class="label">间距</span>
+          <span class="label">Span</span>
           <el-slider
             v-model="margin"
             :step="1"
@@ -46,17 +46,17 @@
             size="mini"
             type="primary"
             @click="changeBgColor"
-          >更改背景色</el-button>
+          >changeBgColor</el-button>
           <el-button
             size="mini"
             type="warning"
             @click="changeFrColor"
-          >更改前景色</el-button>
+          >changeFrColor</el-button>
           <el-button
             size="mini"
             type="danger"
             @click="restore"
-          >恢复原始状态</el-button>
+          >restore</el-button>
         </div>
       </div>
     </div>
@@ -79,7 +79,7 @@ export default {
   methods: {
     generatorCode() {
       if (!this.qrText) {
-        this.$errorMsg('请输入二维码文本内容')
+        this.$errorMsg('Please Input the QRcode content')
         return
       }
       Qrcode.toDataURL(this.qrText, {

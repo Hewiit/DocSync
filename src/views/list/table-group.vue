@@ -7,48 +7,46 @@
           placement="top"
           width="350"
         >
-          <p>通过ID申请加入团队</p>
+          <p>Apply to Join Team by ID</p>
           <el-input
             v-model="form_applyTeam.team_id"
-            placeholder="输入团队ID"
-            style="width: 80%;margin: auto"
+            placeholder="Enter Team ID"
+            style="width: 80%; margin: auto"
           />
-          <p></p>
           <div style="text-align: left; margin: 0">
-            <el-button size="mini" style="margin-top:10px" @click="applyTeam(), visible_applyTeam = false, form_applyTeam.team_id = null">确定</el-button>
+            <el-button size="mini" style="margin-top: 10px" @click="applyTeam(), visible_applyTeam = false, form_applyTeam.team_id = null">Confirm</el-button>
           </div>
           <el-button
             slot="reference"
-            style="margin-right:10px"
+            style="margin-right: 10px"
             size="mini"
             icon="el-icon-plus"
-          >申请加入
-          </el-button>
+          >Apply</el-button>
         </el-popover>
         <el-button
           size="mini"
           icon="el-icon-plus"
           @click="dialogFormVisible = true"
-        >创建团队
+        >Create Team
         </el-button>
         <el-button
           type="danger"
           size="mini"
           icon="el-icon-delete"
           @click="deleteMultiItem"
-        >解散/退出
+        >Dismiss/Leave
         </el-button>
       </template>
     </TableHeader>
-    <el-dialog title="创建团队" :visible.sync="dialogFormVisible">
+    <el-dialog title="Create Team" :visible.sync="dialogFormVisible">
       <el-form :model="form2">
-        <el-form-item label="团队名称" :label-width="formLabelWidth">
+        <el-form-item label="Team Name" :label-width="formLabelWidth">
           <el-input v-model="form2.team_name" autocomplete="off" />
         </el-form-item>
       </el-form>
       <div slot="footer" class="dialog-footer">
-        <el-button @click="dialogFormVisible = false; form2.team_name = null">取 消</el-button>
-        <el-button @click="addTeam">确 定</el-button>
+        <el-button @click="dialogFormVisible = false; form2.team_name = null">Cancel</el-button>
+        <el-button @click="addTeam">Confirm</el-button>
       </div>
     </el-dialog>
     <TableBody ref="tableBody">
@@ -69,7 +67,7 @@
           />
           <el-table-column
             align="center"
-            label="序号"
+            label="No."
             width="80"
           >
             <template slot-scope="scope">
@@ -78,84 +76,84 @@
           </el-table-column>
           <el-table-column
             align="center"
-            label="团队id"
+            label="Team ID"
             prop="id"
             width="100"
           />
           <el-table-column
             align="center"
-            label="团队名"
+            label="Team Name"
             prop="name"
           />
           <el-table-column
             align="center"
-            label="创建时间"
+            label="Created Time"
             prop="time"
             width="180"
           />
           <el-table-column
             align="center"
-            label="成员数量"
+            label="Members"
             prop="member_num"
             width="80"
           />
           <el-table-column
             align="center"
-            label="文档数量"
+            label="Documents"
             prop="word_num"
             width="80"
           />
           <el-table-column
             align="center"
-            label="权限"
+            label="Permission"
             prop="power"
             width="140px"
           />
           <el-table-column
             align="center"
-            label="操作"
+            label="Operation"
             width="260"
           >
             <template slot-scope="scope">
-              <el-dialog title="队长权限转让" :visible.sync="scope.row.dialogVisible">
+              <el-dialog title="Transfer Leader Permission" :visible.sync="scope.row.dialogVisible">
                 <el-form :model="form1">
-                  <el-form-item label="转让成员id" :label-width="formLabelWidth">
+                  <el-form-item label="Member ID to Transfer" :label-width="formLabelWidth">
                     <el-input v-model="form1.member_id" autocomplete="off" />
                   </el-form-item>
                 </el-form>
                 <div slot="footer" class="dialog-footer">
-                  <el-button @click="scope.row.dialogVisible = false; form1.member_id = null; form1.team_id = null">取 消</el-button>
-                  <el-button @click="Leader_change(scope.row),scope.row.dialogVisible = false">确 定</el-button>
+                  <el-button @click="scope.row.dialogVisible = false; form1.member_id = null">Cancel</el-button>
+                  <el-button @click="Leader_change(scope.row), scope.row.dialogVisible = false">Confirm</el-button>
                 </div>
               </el-dialog>
               <el-button
                 :underline="false"
                 size="small"
                 @click="toGroupFile(scope.row)"
-              >进入</el-button>
+              >Enter</el-button>
               <el-button
                 type="info"
                 :underline="false"
                 size="small"
-                :disabled="scope.row.power != '创建者'"
+                :disabled="scope.row.power != 'Creator'"
                 @click="scope.row.dialogVisible = true"
-              >队长让位</el-button>
+              >Transfer Leadership</el-button>
               <el-button
-                v-if="scope.row.power === '创建者'"
+                v-if="scope.row.power === 'Creator'"
                 type="danger"
                 :underline="false"
                 size="small"
                 icon="el-icon-delete"
                 @click="deleteItem(scope.row)"
-              >解散</el-button>
+              >Dismiss</el-button>
               <el-button
-                v-if="scope.row.power != '创建者'"
+                v-if="scope.row.power != 'Creator'"
                 type="danger"
                 :underline="false"
                 size="small"
                 icon="el-icon-delete"
                 @click="deleteItem(scope.row)"
-              >退出</el-button>
+              >Leave</el-button>
             </template>
           </el-table-column>
         </el-table>
@@ -301,70 +299,59 @@ export default {
       this.disbandTeamList = items
     },
     deleteItem(item) {
-      if (item.power === '创建者') {
-        this.$confirm('此操作将永久解散该团队, 是否继续?', '提示', {
-          confirmButtonText: '确定',
-          cancelButtonText: '取消',
+      if (item.power === 'Creator') {
+        this.$confirm('This action will permanently dissolve the team, do you want to continue?', 'Warning', {
+          confirmButtonText: 'Confirm',
+          cancelButtonText: 'Cancel',
           type: 'warning'
-      }).then(() => {
-        this.disbandTeam(item)
-          // console.log(item.id)
-          // this.$message({
-          //   type: 'success',
-          //   message: '解散成功!'
-          // })
+        }).then(() => {
+          this.disbandTeam(item)
         }).catch(() => {
           this.$message({
             type: 'info',
-            message: item.power === '创建者' ? '已取消解散' : '已取消解散'
+            message: 'Dissolution canceled'
           })
         })
       } else {
-        this.$confirm('此操作将退出该团队, 是否继续?', '提示', {
-          confirmButtonText: '确定',
-          cancelButtonText: '取消',
+        this.$confirm('This action will leave the team, do you want to continue?', 'Warning', {
+          confirmButtonText: 'Confirm',
+          cancelButtonText: 'Cancel',
           type: 'warning'
-      }).then(() => {
-        this.quitTeam(item)
-          // console.log(item.id)
-          // this.$message({
-          //   type: 'success',
-          //   message: '解散成功!'
-          // })
+        }).then(() => {
+          this.quitTeam(item)
         }).catch(() => {
           this.$message({
             type: 'info',
-            message: '已取消退出'
+            message: 'Exit canceled'
           })
         })
       }
     },
     deleteMultiItem() {
-      this.$confirm('此操作将永久解散/退出您选中的所有团队, 是否继续?', '提示', {
-          confirmButtonText: '确定',
-          cancelButtonText: '取消',
-          type: 'warning'
+      this.$confirm('This action will permanently dissolve/leave all selected teams, do you want to continue?', 'Warning', {
+        confirmButtonText: 'Confirm',
+        cancelButtonText: 'Cancel',
+        type: 'warning'
       }).then(() => {
         for (let i = 0; i < this.disbandTeamList.length; i++) {
-          if (this.disbandTeamList[i].power === '创建者') {
+          if (this.disbandTeamList[i].power === 'Creator') {
             this.disbandTeam(this.disbandTeamList[i])
           } else {
             this.quitTeam(this.disbandTeamList[i])
           }
         }
         this.Refresh()
-        }).catch(() => {
-          this.$message({
-            type: 'info',
-            message: '已取消解散/退出'
-          })
+      }).catch(() => {
+        this.$message({
+          type: 'info',
+          message: 'Dissolution/exit canceled'
         })
+      })
     },
     disbandTeam(item) {
       this.form_disbandTeam.team_id = item.id
       this.$axios.post('/team/disband_team', qs.stringify(this.form_disbandTeam))
         .then((res) => {
-          // console.log(5)
           if (res.data.result === 4) {
             this.$message.success(res.data.message)
           } else {
@@ -374,47 +361,47 @@ export default {
         })
     },
     Refresh() {
-       this.tableLoading = true
-       this.groupList = []
-       this.$axios.post('/team/get_team_list', qs.stringify(this.form))
-         .then((res) => {
-           if (res.data.result === 3) {
-             for (let i = 0; i < res.data.team_list.length; i++) {
-               const teams = {
-                 name: '',
-                 time: '',
-                 member_num: 0,
-                 word_num: 0,
-                 power: '',
-                 id: 0,
-                 dialogVisible: false
+      this.tableLoading = true
+      this.groupList = []
+      this.$axios.post('/team/get_team_list', qs.stringify(this.form))
+        .then((res) => {
+          if (res.data.result === 3) {
+            for (let i = 0; i < res.data.team_list.length; i++) {
+              const teams = {
+                name: '',
+                time: '',
+                member_num: 0,
+                word_num: 0,
+                power: '',
+                id: 0,
+                dialogVisible: false
+              }
+              teams.name = res.data.team_list[i].team_name
+              teams.time = res.data.team_list[i].create_time
+              teams.member_num = res.data.team_list[i].member_cnt
+              teams.word_num = res.data.team_list[i].word_cnt
+              teams.id = res.data.team_list[i].team_id
+              if (res.data.team_list[i].power === 1) {
+                teams.power = 'Creator'
+              } else if (res.data.team_list[i].power === 2) {
+                teams.power = 'Admin'
+              } else if (res.data.team_list[i].power === 3) {
+                teams.power = 'Visitor'
+              }
+              let flag = 0
+              for (let j = 0; j < this.groupList.length; j++) {
+                if (this.groupList[j].id === teams.id) {
+                  flag = 1
+                  break
                 }
-               teams.name = res.data.team_list[i].team_name
-               teams.time = res.data.team_list[i].create_time
-               teams.member_num = res.data.team_list[i].member_cnt
-               teams.word_num = res.data.team_list[i].word_cnt
-               teams.id = res.data.team_list[i].team_id
-               if (res.data.team_list[i].power === 1) {
-                 teams.power = '创建者'
-               } else if (res.data.team_list[i].power === 2) {
-                 teams.power = '管理员'
-               } else if (res.data.team_list[i].power === 3) {
-                 teams.power = '游客'
-               }
-               let flag = 0
-               for (let i = 0; i < this.groupList.length; i++) {
-                 if (this.groupList[i].id === teams.id) {
-                   flag = 1
-                   break
-                 }
-               }
-               if (!flag) { this.groupList.push(teams) }
-             }
-           } else {
-             this.$message.error(res.data.message)
-           }
-           this.tableLoading = false
-         })
+              }
+              if (!flag) { this.groupList.push(teams) }
+            }
+          } else {
+            this.$message.error(res.data.message)
+          }
+          this.tableLoading = false
+        })
     },
     onSingleSuccess({ res }) {
       if (res.status !== 200) {
@@ -426,7 +413,7 @@ export default {
     beforeUpload(file) {
       const size = file.size
       if (size / 1024 > 500) {
-        this.$errorMsg('上传文件最大不能超过500K')
+        this.$errorMsg('The uploaded file must not exceed 500K')
         return false
       }
     }

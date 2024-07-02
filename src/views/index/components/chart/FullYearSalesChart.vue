@@ -6,7 +6,7 @@
   >
     <template #header>
       <div class="text-bold">
-        全年销售额分析图
+        Full-year sales analysis chart
       </div>
     </template>
     <div
@@ -19,18 +19,18 @@
 <script>
 import itemChartMixins from './mixins/item-chart-mixins'
 const months = [
-  '一月',
-  '二月',
-  '三月',
-  '四月',
-  '五月',
-  '六月',
-  '七月',
-  '八月',
-  '九月',
-  '十月',
-  '十一月',
-  '十二月'
+  'January',
+  'February',
+  'March',
+  'April',
+  'May',
+  'June',
+  'July',
+  'August',
+  'September',
+  'October',
+  'November',
+  'December'
 ]
 export default {
   name: 'FullYearSalesChart',
@@ -53,7 +53,7 @@ export default {
           containLabel: true
         },
         legend: {
-          data: ['2019全年销售额', '2020全年销售额']
+          data: ['2019 Annual Sales', '2020 Annual Sales']
         },
         tooltip: {
           trigger: 'axis'
@@ -70,8 +70,8 @@ export default {
         series: [
           {
             type: 'line',
-            name: '2019全年销售额',
-            stack: '总量',
+            name: '2019 Annual Sales',
+            stack: 'Total',
             data: [80, 60, 55, 99, 103, 110, 97, 87, 65, 120, 105, 115],
             smooth: true,
             lineStyle: {
@@ -103,8 +103,8 @@ export default {
           },
           {
             type: 'line',
-            name: '2020全年销售额',
-            stack: '总量',
+            name: '2020 Annual Sales',
+            stack: 'Total',
             data: [90, 70, 50, 93, 88, 96, 83, 75, 90, 110, 98, 100],
             smooth: true,
             lineStyle: {

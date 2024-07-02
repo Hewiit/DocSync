@@ -1,11 +1,11 @@
 <template>
   <div class="notify-container">
-    <div class="title text-cut">请下午三点半到大会议室开项目需求分析会，要求与会人员必须按时到场</div>
+    <div class="title text-cut">Please attend the project requirements analysis meeting in the main conference room at 3:30 PM this afternoon. All participants are required to be on time.</div>
     <div class="flex justify-end margin-top-xs">
       <el-tag
         type="primary"
         size="mini"
-      >进行中</el-tag>
+      >In Progress</el-tag>
     </div>
   </div>
 </template>

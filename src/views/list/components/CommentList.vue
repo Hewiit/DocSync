@@ -33,7 +33,7 @@
           size="mini"
           :type="item.status === 0 ? 'warning' : 'success'"
         >
-          {{ item.status === 0 ? '不对外展示' : '对外展示' }}
+          {{ item.status === 0 ? 'Not Displayed' : 'Displayed' }}
         </el-tag>
         <div class="flex-sub"></div>
         <div>
@@ -46,10 +46,10 @@
             </span>
             <el-dropdown-menu slot="dropdown">
               <el-dropdown-item :command="{ type: 'delete', item }">
-                删除
+                Delete
               </el-dropdown-item>
               <el-dropdown-item :command="{ type: 'changeStatus', item }">
-                {{ item.status === 0 ? '开启对外展示' : '关闭对外展示' }}
+                {{ item.status === 0 ? 'Enable Display' : 'Disable Display' }}
               </el-dropdown-item>
             </el-dropdown-menu>
           </el-dropdown>
@@ -71,9 +71,9 @@
     </el-card>
     <div class="text-center margin-top">
       <div v-if="loading">
-        加载中...
+        Loading...
       </div>
-      <div v-if="noMore">没有更多了</div>
+      <div v-if="noMore">No more data</div>
     </div>
   </div>
 </template>
@@ -112,15 +112,15 @@ export default {
   methods: {
     handleCommand({ type, item }) {
       if (type === 'delete') {
-        this.$showConfirmDialog('是否要删除此评论？', () => {
+        this.$showConfirmDialog('Are you sure you want to delete this comment?', () => {
           this.dataList.splice(this.dataList.indexOf(item), 1)
-          this.$successMsg('评论删除成功')
+          this.$successMsg('Comment deleted successfully')
         })
       } else {
-        const tip = item.status === 0 ? '开启' : '关闭'
-        this.$showConfirmDialog(`是否要${tip}此评论？`, () => {
+        const tip = item.status === 0 ? 'Enable' : 'Disable'
+        this.$showConfirmDialog(`Are you sure you want to ${tip} this comment?`, () => {
           item.status = item.status === 0 ? 1 : 0
-          this.$successMsg(`评论${tip}成功`)
+          this.$successMsg(`Comment ${tip}ed successfully`)
         })
       }
     },

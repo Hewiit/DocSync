@@ -2,7 +2,7 @@
   <div style="width: 660px">
     <el-tabs v-model="activeName">
       <el-tab-pane
-        :label="`消息(${messageNum})`"
+        :label="`Messages (${messageNum})`"
         name="notify"
       >
         <el-table
@@ -10,12 +10,12 @@
           :data="messageList"
           height="400"
         >
-          <el-table-column width="250" property="content" label="消息内容" align="center" />
-          <el-table-column width="100" property="send_name" label="发送人" />
-          <el-table-column width="100" property="send_time" label="发送时间" />
+          <el-table-column width="250" property="content" label="Message Content" align="center" />
+          <el-table-column width="100" property="send_name" label="Sender" />
+          <el-table-column width="100" property="send_time" label="Sent Time" />
           <el-table-column
             align="center"
-            label="操作"
+            label="Actions"
             width="210"
           >
             <template slot-scope="scope">
@@ -24,20 +24,20 @@
                 size="mini"
                 :underline="false"
                 @click="accept(scope.row)"
-              >接受</el-button>
+              >Accept</el-button>
               <el-button
                 v-if="scope.row.showButton"
                 size="mini"
                 type="danger"
                 :underline="false"
                 @click="refuse(scope.row)"
-              >拒绝</el-button>
+              >Refuse</el-button>
               <el-button
                 size="mini"
                 type="danger"
                 :underline="false"
                 @click="deleteMessage(scope.row)"
-              >删除</el-button>
+              >Delete</el-button>
             </template>
           </el-table-column>
         </el-table>
@@ -46,7 +46,7 @@
             :underline="false"
             class="flex-sub text-center"
             @click="deleteAllMessage"
-          >清空消息
+          >Clear All Messages
           </el-link>
         </div>
       </el-tab-pane>
@@ -205,51 +205,48 @@ export default {
                messages.send_id = res.data.message_list[i].send_id
                messages.team_power = res.data.message_list[i].power
                messages.team_id = res.data.message_list[i].team_id
-               // 0 表示邀请他人加入，1表示申请加入团队，2表示退出团队，3表示踢出成员，
-               // 4表示解散团队，5表示拒绝加入申请，6表示接受加入申请，7接受团队邀请，8拒绝团队邀请，9更改成员权限
-               // 10表示文档协作用户退出和另一位用户协作文档，11表示文档拥有用户取消和协作用户的文档编辑
                switch (messages.type) {
                  case 0:
-                   messages.content = '用户' + messages.send_name + '邀请您进入团队' + messages.team_name
-                   messages.showButton = true
-                   break
+                   messages.content = 'User ' + messages.send_name + ' invites you to join team ' + messages.team_name;
+                   messages.showButton = true;
+                   break;
                  case 1:
-                   messages.content = '用户' + messages.send_name + '申请加入您的团队' + messages.team_name
-                   messages.showButton = true
-                   break
+                   messages.content = 'User ' + messages.send_name + ' applies to join your team ' + messages.team_name;
+                   messages.showButton = true;
+                   break;
                  case 2:
-                   messages.content = '您已成功退出用户' + messages.send_name + '所属团队' + messages.team_name
-                   break
+                   messages.content = 'You have successfully exited team ' + messages.team_name + ' where user ' + messages.send_name + ' belongs';
+                   break;
                  case 3:
-                   messages.content = '您已被踢出用户' + messages.send_name + '所属团队' + messages.team_name
-                   break
+                   messages.content = 'You have been kicked out of team ' + messages.team_name + ' by user ' + messages.send_name;
+                   break;
                  case 4:
-                   messages.content = '您参加的用户' + messages.send_name + '所属团队' + messages.team_name + '已被解散'
-                   break
+                   messages.content = 'The team ' + messages.team_name + ' that you participated in, led by user ' + messages.send_name + ', has been disbanded';
+                   break;
                  case 5:
-                   messages.content = '您加入用户' + messages.send_name + '所属团队' + messages.team_name + '的申请已被拒绝'
-                   break
+                   messages.content = 'Your application to join team ' + messages.team_name + ', led by user ' + messages.send_name + ', has been rejected';
+                   break;
                  case 6:
-                   messages.content = '您加入用户' + messages.send_name + '所属团队' + messages.team_name + '的申请已被接受'
-                   break
+                   messages.content = 'Your application to join team ' + messages.team_name + ', led by user ' + messages.send_name + ', has been accepted';
+                   break;
                  case 7:
-                   messages.content = '您邀请用户' + messages.send_name + '加入您所属团队' + messages.team_name + '的邀请已被接受'
-                   break
+                   messages.content = 'Your invitation to user ' + messages.send_name + ' to join your team ' + messages.team_name + ' has been accepted';
+                   break;
                  case 8:
-                   messages.content = '您邀请用户' + messages.send_name + '加入您所属团队' + messages.team_name + '的邀请已被拒绝'
-                   break
+                   messages.content = 'Your invitation to user ' + messages.send_name + ' to join your team ' + messages.team_name + ' has been rejected';
+                   break;
                  case 9:
-                   messages.content = '您在团队' + messages.team_name + '的权限已被用户' + messages.send_name + '更改'
-                   break
+                   messages.content = 'Your permissions in team ' + messages.team_name + ' have been changed by user ' + messages.send_name;
+                   break;
                  case 10:
-                   messages.content = '您有关名称为《' + messages.word_name + '》的文档协作用户 ' + messages.send_name + '已退出协作'
-                   break
+                   messages.content = 'User ' + messages.send_name + ' has exited collaboration on the document named "' + messages.word_name + '" that you are collaborating on';
+                   break;
                  case 11:
-                   messages.content = '您已被用户' + messages.send_name + '解除文档《' + messages.word_name + '》的协作编辑关系'
-                   break
+                   messages.content = 'User ' + messages.send_name + ' has removed your collaboration editing rights on the document "' + messages.word_name + '"';
+                   break;
                  case 12:
-                   messages.content = '您已被用户' + messages.send_name + '加入有关文档《' + messages.word_name + '》的协作编辑关系'
-                   break
+                   messages.content = 'User ' + messages.send_name + ' has added you to collaborate on editing the document "' + messages.word_name + '"';
+                   break;
                }
                if (messages.status === 1) {
                  messages.showButton = false

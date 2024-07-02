@@ -1,20 +1,20 @@
 <template>
-  <div class="main-container">
+  <div className="main-container">
     <el-tabs v-model="activeName">
       <el-tab-pane
-        label="商品管理"
+        label="Product Management"
         name="first"
         lazy
-        class="wrapper"
+        className="wrapper"
       >
-        <GoodsList />
+        <GoodsList/>
       </el-tab-pane>
       <el-tab-pane
-        label="评论管理"
+        label="Comment Management"
         name="second"
         lazy
       >
-        <CommentList />
+        <CommentList/>
       </el-tab-pane>
     </el-tabs>
     <el-backtop
@@ -27,9 +27,10 @@
 <script>
 import GoodsList from './components/GoodsList'
 import CommentList from './components/CommentList'
+
 export default {
   name: 'GridList',
-  components: { GoodsList, CommentList },
+  components: {GoodsList, CommentList},
   data() {
     return {
       activeName: 'first'
@@ -43,6 +44,7 @@ export default {
   margin-bottom: 5px;
   padding: 0 10px;
 }
+
 .wrapper {
   position: relative;
 }

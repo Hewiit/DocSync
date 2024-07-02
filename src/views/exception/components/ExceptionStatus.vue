@@ -11,7 +11,7 @@
           size="mini"
           @click="backHome"
         >
-          返回首页
+          Back to mainPage
         </el-button>
       </div>
     </div>
@@ -49,11 +49,11 @@ export default {
     },
     statusTip() {
       if (this.status.toString() === '404') {
-        return '您访问的页面不存在'
+        return 'The page you are trying to access does not exist.'
       } else if (this.status.toString() === '403') {
-        return '您没有权限访问该页面'
+        return 'You do not have permission to access this page.'
       } else {
-        return '您访问的页面出错啦'
+        return 'The page you are trying to access encountered an error.'
       }
     }
   },

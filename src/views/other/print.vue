@@ -3,12 +3,12 @@
     <el-card :body-style="{padding: '5px'}">
       <template #header>
         <div class="flex justify-between">
-          <el-link :underline="false">打印图片</el-link>
+          <el-link :underline="false">Print the picture</el-link>
           <el-button
             type="primary"
             size="small"
             @click="printImage"
-          >打印</el-button>
+          >Print</el-button>
         </div>
       </template>
       <div class="image-wrapper">
@@ -21,12 +21,12 @@
     >
       <template #header>
         <div class="flex justify-between">
-          <el-link :underline="false">打印HTML</el-link>
+          <el-link :underline="false">Print HTML</el-link>
           <el-button
             type="primary"
             size="small"
             @click="printHtml"
-          >打印</el-button>
+          >Print</el-button>
         </div>
       </template>
       <div
@@ -42,17 +42,17 @@
         >
           <el-table-column
             align="center"
-            label="姓名"
+            label="Name"
             prop="name"
           />
           <el-table-column
             align="center"
-            label="年龄"
+            label="Age"
             prop="age"
           />
           <el-table-column
             align="center"
-            label="性别"
+            label="Gender"
             prop="gender"
           />
         </el-table>
@@ -71,23 +71,7 @@ export default {
   data() {
     return {
       imagePath,
-      dataList: [
-        {
-          name: '张三',
-          age: 10,
-          gender: '男'
-        },
-        {
-          name: '李四',
-          age: 40,
-          gender: '男'
-        },
-        {
-          name: '王五',
-          age: 30,
-          gender: '女'
-        }
-      ]
+      dataList: []
     }
   },
   methods: {
