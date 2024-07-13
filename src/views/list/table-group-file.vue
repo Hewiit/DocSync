@@ -180,14 +180,7 @@
                     width="350"
                   >
                     <p>Add Collaborator by Name</p>
-                    <el-select v-model="form_invite.username" placeholder="Select Member">
-                      <el-option
-                        v-for="item in powerOptions"
-                        :key="item.value"
-                        :label="item.label"
-                        :value="item.value"
-                      />
-                    </el-select>
+                    <el-input v-model="form_invite.username" placeholder="Select Member" />
                     <p></p>
                     <el-select v-model="form_invite.power" placeholder="Select Permission">
                       <el-option
@@ -208,20 +201,12 @@
                     >Add Member
                     </el-button>
                   </el-popover>
-                  <el-table :data="gridData">
+                  <el-table :data="gridData" empty-text="No Data">
                     <el-table-column width="140" property="name" label="Name" />
                     <el-table-column width="60" property="power" label="Permission" />
-                    <el-table-column
-                      align="center"
-                      label="Operation"
-                      width="80"
-                    >
+                    <el-table-column align="center" label="Operation" width="80">
                       <template>
-                        <el-button
-                          size="mini"
-                          type="danger"
-                          :underline="false"
-                        >Delete</el-button>
+                        <el-button size="mini" type="danger" :underline="false">Delete</el-button>
                       </template>
                     </el-table-column>
                   </el-table>
@@ -308,6 +293,20 @@ export default {
   data() {
     return {
       loading: false,
+      powerOptions: [
+        {
+          value: 1,
+          label: 'captain'
+        },
+        {
+          value: 2,
+          label: 'developer'
+        },
+        {
+          value: 3,
+          label: 'observer'
+        }
+      ],
       form: {
           token: getters.getToken(state),
           user_id: getters.getUserId(state),

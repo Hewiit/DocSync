@@ -61,7 +61,7 @@ export default {
     padding: 5px;
     border-radius: 3px;
     cursor: pointer;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.12), 0 0 6px rgba(0, 0, 0, 0.04);
+    box-shadow: 0 2px 4px rgba(47,187, 212, 100), 0 0 6px rgba(47,187, 212, 100);
   }
   .copy:active {
     background-color: #1989fa;

@@ -7,8 +7,8 @@
       :default-active="$route.fullPath"
       mode="vertical"
       :collapse="state.isCollapse"
-      :background-color="state.themeVariables[state.theme].menuColor"
-      :text-color="state.themeVariables[state.theme].menuTextColor"
+      :background-color="state.themeVariables[state.theme]"
+      :text-color="state.themeVariables[state.theme]"
       :collapse-transition="false"
     >
       <slot></slot>
