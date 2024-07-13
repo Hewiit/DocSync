@@ -39,7 +39,7 @@
             <div style="text-align: left; margin: 0">
               <el-button size="mini" style="margin-top:10px" @click="addComment(), form_addComment.comment_content= null, comment_visible = false">Confirm</el-button>
             </div>
-            <el-table :data="commentList" height="400">
+            <el-table :data="commentList" height="400" empty-text="No Data">
               <el-table-column width="120" property="username" label="Name" />
               <el-table-column width="120" property="time" label="Time" />
               <el-table-column width="300" property="content" label="Comment" />
@@ -62,7 +62,7 @@
               placement="top"
               width="280"
             >
-              <el-table :data="gridData" height="400">
+              <el-table :data="gridData" height="400" empty-text="No Data">
                 <el-table-column width="160" property="username" label="Name" />
                 <el-table-column
                   align="center"
@@ -85,7 +85,7 @@
               >Add Team Member
               </el-button>
             </el-popover>
-            <el-table :data="gridData">
+            <el-table :data="gridData" empty-text="No Data">
               <el-table-column width="140" property="name" label="Name" />
               <el-table-column width="60" property="power" label="Permission" />
               <el-table-column

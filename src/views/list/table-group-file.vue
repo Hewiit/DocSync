@@ -191,7 +191,7 @@
                       />
                     </el-select>
                     <div style="text-align: left; margin: 0">
-                      <el-button size="mini" style="margin-top:10px" @click="invite(), visible = false">Confirm</el-button>
+                      <el-button size="mini" style="margin-top:10px" @click="cooperate_invite(scope.row), visible = false">Confirm</el-button>
                     </div>
                     <el-button
                       slot="reference"
@@ -340,8 +340,9 @@ export default {
       form_invite: {
         token: getters.getToken(state),
         username: getters.getUserName(state),
-        send_id: getters.getUserId(state),
+        user_id: getters.getUserId(state),
         accept_id: null,
+        word_id: null,
         team_id: Number(localStorage.getItem('team_id')),
         power: null
       },
@@ -458,6 +459,17 @@ export default {
             }
           }
           this.loading = false
+        })
+    },
+    cooperate_invite(item) {
+      this.form_invite.word_id = item.word_id
+      this.$axios.post('/team/send_cooperate_inviter', qs.stringify(this.form_invite))
+        .then((res) => {
+          if (res.data.result === 5) {
+            this.$message.success(res.data.message)
+          } else {
+            this.$message.error(res.data.message)
+          }
         })
     },
     onGroupRichTextEditor(item) {
