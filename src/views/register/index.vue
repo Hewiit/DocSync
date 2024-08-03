@@ -185,7 +185,7 @@ export default {
     },
     identifier_send() {
       if (!this.form.email) {
-        this.$errorMsg('请输入邮箱')
+        this.$errorMsg('Please enter your email')
         return
       }
       this.$axios.post(
