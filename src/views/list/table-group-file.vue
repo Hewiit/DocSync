@@ -163,7 +163,6 @@
               >
                 <p>Document Management</p>
                 <el-popover
-                  v-model="visible"
                   placement="top"
                   width="320"
                 >
@@ -175,7 +174,6 @@
                     inactive-text="Fully Public"
                   />
                   <el-popover
-                    v-model="visible"
                     placement="top"
                     width="350"
                   >
@@ -183,7 +181,7 @@
                     <el-input v-model="form_invite.accept_id" placeholder="Select Member" />
                     <p></p>
                     <div style="text-align: left; margin: 0">
-                      <el-button size="mini" style="margin-top:10px" @click="cooperate_invite(scope.row), visible = false">Confirm</el-button>
+                      <el-button size="mini" style="margin-top:10px" @click="cooperate_invite(scope.row)">Confirm</el-button>
                     </div>
                     <el-button
                       slot="reference"
@@ -193,23 +191,14 @@
                     >Add Member
                     </el-button>
                   </el-popover>
-                  <el-table :data="gridData" empty-text="No Data">
-                    <el-table-column width="140" property="name" label="Name" />
-                    <el-table-column width="60" property="power" label="Permission" />
-                    <el-table-column align="center" label="Operation" width="80">
-                      <template>
-                        <el-button size="mini" type="danger" :underline="false">Delete</el-button>
-                      </template>
-                    </el-table-column>
-                  </el-table>
-                  <el-button
-                    slot="reference"
-                    v-permission="['admin', 'editor']"
-                    style="margin-inline:10px"
-                    size="mini"
-                    icon="el-icon-plus"
-                  >Collaborate
-                  </el-button>
+<!--                  <el-button-->
+<!--                    slot="reference"-->
+<!--                    v-permission="['admin', 'editor']"-->
+<!--                    style="margin-inline:10px"-->
+<!--                    size="mini"-->
+<!--                    icon="el-icon-plus"-->
+<!--                  >Collaborate-->
+<!--                  </el-button>-->
                 </el-popover>
                 <el-button
                   size="mini"
@@ -299,6 +288,7 @@ export default {
           label: 'observer'
         }
       ],
+      CooperatorData:[],
       form: {
           token: getters.getToken(state),
           user_id: getters.getUserId(state),
@@ -345,6 +335,12 @@ export default {
         team_id: Number(localStorage.getItem('team_id')),
         open: 0
       },
+      form_getCooperator: {
+        token: getters.getToken(state),
+        username: getters.getUserName(state),
+        user_id: getters.getUserId(state),
+        word_id: null,
+      },
       teamWordList: [],
       dialogFormVisible: false,
       formLabelWidth: '120px',
@@ -374,6 +370,9 @@ export default {
       this.radio2 = '3'
       this.addWord()
     },
+    // getCooperatorList() {
+    //
+    // }
     openTeamWord(item) {
       this.form_openTeamWord.word_id = item.word_id
       this.form_openTeamWord.open = item.open === 'yes' ? 0 : 1
