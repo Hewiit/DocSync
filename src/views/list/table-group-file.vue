@@ -288,7 +288,6 @@ export default {
           label: 'observer'
         }
       ],
-      CooperatorData:[],
       form: {
           token: getters.getToken(state),
           user_id: getters.getUserId(state),
@@ -334,12 +333,6 @@ export default {
         word_id: 0,
         team_id: Number(localStorage.getItem('team_id')),
         open: 0
-      },
-      form_getCooperator: {
-        token: getters.getToken(state),
-        username: getters.getUserName(state),
-        user_id: getters.getUserId(state),
-        word_id: null,
       },
       teamWordList: [],
       dialogFormVisible: false,
