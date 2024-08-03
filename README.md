@@ -1,13 +1,14 @@
 安装依赖：
 
 ```
-npm intall
+npm install
 ```
 
 运行：
 
 ```
-npm run dev
+npm run dev或者
+npm run serve
 ```
 
 打包构建：
