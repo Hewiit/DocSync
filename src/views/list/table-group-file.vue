@@ -179,17 +179,9 @@
                     placement="top"
                     width="350"
                   >
-                    <p>Add Collaborator by Name</p>
-                    <el-input v-model="form_invite.username" placeholder="Select Member" />
+                    <p>Add Collaborator by ID</p>
+                    <el-input v-model="form_invite.accept_id" placeholder="Select Member" />
                     <p></p>
-                    <el-select v-model="form_invite.power" placeholder="Select Permission">
-                      <el-option
-                        v-for="item in powerOptions"
-                        :key="item.value"
-                        :label="item.label"
-                        :value="item.value"
-                      />
-                    </el-select>
                     <div style="text-align: left; margin: 0">
                       <el-button size="mini" style="margin-top:10px" @click="cooperate_invite(scope.row), visible = false">Confirm</el-button>
                     </div>
@@ -343,8 +335,7 @@ export default {
         user_id: getters.getUserId(state),
         accept_id: null,
         word_id: null,
-        team_id: Number(localStorage.getItem('team_id')),
-        power: null
+        team_id: Number(localStorage.getItem('team_id'))
       },
       form_openTeamWord: {
         token: getters.getToken(state),

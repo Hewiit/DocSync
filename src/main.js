@@ -11,8 +11,11 @@ import '@/components/common'
 import LayoutStore from '@/layouts/index'
 import { resetRouter } from './router/index'
 import Cookies from 'js-cookie'
+import locale from 'element-ui/lib/locale/lang/en'
+import ElementUI from 'element-ui'
 Vue.prototype.$axios = axios
 axios.defaults.baseURL = 'http://49.235.148.137:8000/'
+Vue.use(ElementUI, { locale })
 Vue.use(LayoutStore, {
   state: {
     isFixedNavBar: true,

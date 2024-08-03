@@ -53,7 +53,10 @@ export default {
       store.toPersonalCenter && store.toPersonalCenter()
     },
     onLogout() {
-      MessageBox.confirm('Whether you want to log out？', 'tips')
+      MessageBox.confirm('Whether you want to log out？', 'tips', {
+        confirmButtonText: 'Yes',
+        cancelButtonText: 'No'
+      })
         .then(_ => {
           store.logout()
           store.onLogout && store.onLogout()
